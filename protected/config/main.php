@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Storybox',
 
 	// preloading 'log' component
 	'preload'=>array(
@@ -28,7 +28,7 @@ return array(
 
 	'modules'=>array(
 	  'rights'=>array(
-	    //'install'=>true,
+	   // 'install'=>true,
 	  ),
 	   
 	  'user'=>array(
@@ -69,8 +69,8 @@ return array(
 	'components'=>array(
 		'user'=>array(
 			// enable cookie-based authentication
-		  'class'=>'RWebUser',
-//    	'class' => 'WebUser',
+//		  'class'=>'RWebUser',
+    	'class' => 'WebUser',
     	'allowAutoLogin'=>true,
     	'loginUrl' => array('/user/login'),
 		),
