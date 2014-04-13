@@ -26,6 +26,22 @@
 		<?php echo $form->textField($model,'address',array('size'=>60,'maxlength'=>255)); ?>
 	</div>
 
+		<div class="row">
+		<?php echo $form->label($model,'state'); ?>
+		<?php echo $form->dropDownList($model,'address',array('a','b','c')); ?>
+	</div>
+	
+		<div class="row">
+		<?php echo $form->label($model,'city'); ?>
+		<?php echo $form->dropDownList($model,'address',array('a1','b1','c1')); ?>
+	</div>
+	
+		<div class="row">
+		<?php echo $form->label($model,'distract'); ?>
+		<?php echo $form->dropDownList($model,'address',array('a2','b2','c2')); ?>
+	</div>
+	
+	
 	<div class="row">
 		<?php echo $form->label($model,'description'); ?>
 		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>

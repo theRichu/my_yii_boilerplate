@@ -14,14 +14,70 @@ $this->menu=array(
 
 <h1>Places</h1>
 
-<form method="get">
-<input type="search" placeholder="search" name="q" 
+<?php 
+/** @var TbActiveForm $form */
+$form = $this->beginWidget(
+    'bootstrap.widgets.TbActiveForm',
+    array(
+        'id' => 'searchForm',
+        'type' => 'search',
+        'method'=> 'get',
+        'htmlOptions' => array('class' => 'well well-large'),
+    )
+);
 
-value="<?=isset($_GET['q']) ? CHtml::encode($_GET['q']) : '' ; 
+ echo $form->dropDownListRow(
+  $model,
+  'state',
+  array('도/광역시', '1', '2', '3', '4', '5')
+        ); 
 
-?>" />
-<input type="submit" value="search" />
-</form>
+ echo $form->dropDownListRow(
+   $model,
+   'city',
+   array('시/군/구', '1', '2', '3', '4', '5')
+ );
+ 
+ echo $form->dropDownListRow(
+   $model,
+   'district',
+   array('동/면/', '1', '2', '3', '4', '5')
+ );
+ ?>
+
+ <?php
+echo $form->textFieldRow(
+    $model,
+    'textField',
+    array(
+        'class' => 'input-medium',
+        'name'=>'q',
+        'value'=>isset($_GET['q']) ? CHtml::encode($_GET['q']) : '',
+    ),
+    array(
+        'prepend' => '<i class="icon-search"></i>'
+    )
+);
+?>
+
+<?php $this->widget(
+            'bootstrap.widgets.TbButton',
+            array(
+                'buttonType' => 'submit',
+                'type' => 'primary',
+                'label' => 'Submit'
+            )
+        ); ?>
+        <?php $this->widget(
+            'bootstrap.widgets.TbButton',
+            array('buttonType' => 'reset', 'label' => 'Reset')
+        ); ?>
+
+        <?php 
+$this->endWidget();
+unset($form);
+?>
+
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

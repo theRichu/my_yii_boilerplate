@@ -145,6 +145,13 @@ class PlacesController extends Controller
 			'dataProvider'=>$dataProvider,
 		));
 		 */
+	  $model=new Places('search');
+	  $model->unsetAttributes();  // clear any default values
+	  if(isset($_GET['Places']))
+	    $model->attributes=$_GET['Places'];
+	   
+	  
+	  
 		$criteria = new CDbCriteria();
 		
 		if(isset($_GET['q']))
@@ -159,6 +166,7 @@ class PlacesController extends Controller
 		("Places", array('criteria'=>$criteria));
 		
 		$this->render('index',array(
+		  'model'=>$model,
 		  'dataProvider'=>$dataProvider,
 		));
 	}
