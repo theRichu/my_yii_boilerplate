@@ -27,6 +27,9 @@ return array(
 	),
 
 	'modules'=>array(
+	  'cal'=>array('debug'=>true),
+	  Yii::setPathOfAlias('efullcalendar', dirname(__FILE__) . '/../extensions/efullcalendar'),
+	  
 	  'rights'=>array(
 	   // 'install'=>true,
 	  ),

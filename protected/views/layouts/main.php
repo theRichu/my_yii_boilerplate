@@ -32,6 +32,13 @@
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
+
+
+        array('url'=>array('/places'), 'label'=>'장소'),
+			  array('url'=>array('/rooms'), 'label'=>'공간'),
+			  array('url'=>array('/notices'), 'label'=>'살펴보기'),
+			  array('url'=>array('/reservations'), 'label'=>'예약하기'),
+
         array('url'=>Yii::app()->getModule('user')->loginUrl, 'label'=>Yii::app()->getModule('user')->t("Login"), 'visible'=>Yii::app()->user->isGuest),
         array('url'=>Yii::app()->getModule('user')->registrationUrl, 'label'=>Yii::app()->getModule('user')->t("Register"), 'visible'=>Yii::app()->user->isGuest),
         array('url'=>Yii::app()->getModule('user')->profileUrl, 'label'=>Yii::app()->getModule('user')->t("Profile"), 'visible'=>!Yii::app()->user->isGuest),
