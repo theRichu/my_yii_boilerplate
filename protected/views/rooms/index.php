@@ -29,43 +29,64 @@ $form = $this->beginWidget(
 ?>
 
 
+
+
 <?php 
+
+$state = (isset($_GET['state']))?$_GET['state']:'';
+$city = (isset($_GET['city']))?$_GET['city']:'';
+
+$state_setting = array(
+  'prompt'=>'도/광역시',
+  'ajax' => array(
+    'type'=>'POST',
+    'url'=>CController::createUrl('loadcities'),
+    'update'=>'#city',
+    'data'=>array('state'=>'js:this.value'),
+  ),
+  'options'=>array(
+    $state=>array('selected'=>'selected'),
+  )
+);
+fb($state_setting);
   echo CHtml::dropDownList(
    'state',
    'state',
    $model->getStateOptions(),
    array(
-     'prompt'=>'도/광역시',
-     'ajax' => array(
-       'type'=>'POST',
-       'url'=>CController::createUrl('loadcities'),
-       'update'=>'#city',
-       'data'=>array('state'=>'js:this.value'),
-      ),
-     'options'=>array(
-       $_GET['state']=>array('selected'=>'selected'),
-     ),
-)); 
+  'prompt'=>'도/광역시',
+  'ajax' => array(
+    'type'=>'POST',
+    'url'=>CController::createUrl('loadcities'),
+    'update'=>'#city',
+    'data'=>array('state'=>'js:this.value'),
+  ),
+  'options'=>array(
+    $state=>array('selected'=>'selected'),
+  )
+)
+); 
+  
 
   
 echo CHtml::dropDownList(
     'city',
     'city',
-    $model->getCityOptions($_GET['state']), 
+    $model->getCityOptions($state),
     array(
       'prompt'=>'시/군/구',
       'options'=>array(
-        $_GET['city']=>array('selected'=>'selected'),
-      ),
-      /* 'ajax' => array(
-        'type'=>'POST',
-        'url'=>CController::createUrl('loaddistricts'),
-        'update'=>'#district_name',
-        'data'=>array('city'=>'js:this.value'),
-      ) */ 
-));
+        $city=>array('selected'=>'selected')
+      )
+  )
+);
 
-
+/* 'ajax' => array(
+ 'type'=>'POST',
+  'url'=>CController::createUrl('loaddistricts'),
+  'update'=>'#district_name',
+  'data'=>array('city'=>'js:this.value'),
+) */
 //echo CHtml::dropDownList('district_name','', array(), array('prompt'=>'동/면/읍'));
  ?>
 
