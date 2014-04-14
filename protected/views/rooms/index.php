@@ -22,6 +22,7 @@ $form = $this->beginWidget(
         'id' => 'searchForm',
         'type' => 'search',
         'method'=> 'get',
+        'action'=> 'rooms',
         'htmlOptions' => array('class' => 'well well-large'),
     )
 );
@@ -29,26 +30,33 @@ $form = $this->beginWidget(
 
 
 <?php 
-  echo $form->dropDownList(
-  $model_place,
-  'state',
+  echo CHtml::dropDownList(
+   'state',
+   'state',
    $model->getStateOptions(),
    array(
      'prompt'=>'도/광역시',
      'ajax' => array(
        'type'=>'POST',
        'url'=>CController::createUrl('loadcities'),
-       'update'=>'#city_name',
+       'update'=>'#city',
        'data'=>array('state'=>'js:this.value'),
-      ) 
+      ),
+     'options'=>array(
+       $_GET['state']=>array('selected'=>'selected'),
+     ),
 )); 
 
+  
 echo CHtml::dropDownList(
-    'city_name',
-    '',
-    array(), 
+    'city',
+    'city',
+    $model->getCityOptions($_GET['state']), 
     array(
       'prompt'=>'시/군/구',
+      'options'=>array(
+        $_GET['city']=>array('selected'=>'selected'),
+      ),
       /* 'ajax' => array(
         'type'=>'POST',
         'url'=>CController::createUrl('loaddistricts'),
@@ -63,7 +71,8 @@ echo CHtml::dropDownList(
 
 
 
- <?php echo $form->select2Row(
+ <?php 
+ /*echo $form->select2Row(
             $model,
             'name',
             array(
@@ -75,7 +84,9 @@ echo CHtml::dropDownList(
                     'tokenSeparators' => array(',', ' ')
                 )
             )
-        );?>
+        );
+*/?>
+ 
  <?php
 echo $form->textFieldRow(
     $model,
@@ -92,6 +103,7 @@ echo $form->textFieldRow(
 ?>
 
     <?php 
+    /*
     // range slider
     $this->widget('zii.widgets.jui.CJuiSlider', array(
       'options'=>array(
@@ -101,8 +113,10 @@ echo $form->textFieldRow(
         'values'=>array(5, 20)
       ),
     ));
+    */
     ?>
  <?php
+ /*
 echo $form->textFieldRow(
     $model,
     'textField',
@@ -111,7 +125,7 @@ echo $form->textFieldRow(
         'name'=>'capacity',
         'value'=>isset($_GET['c']) ? CHtml::encode($_GET['c']) : '',
     )
-);
+);*/
 ?>
 <?php $this->widget(
             'bootstrap.widgets.TbButton',

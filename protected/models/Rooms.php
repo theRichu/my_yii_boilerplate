@@ -148,7 +148,14 @@ class Rooms extends StoryBoxActiveRecord
 	  $data=CHtml::listData($data,'state','state');
 	  return $data;
 	}
+	public function getCityOptions($state)
+	{
+	  $data=Places::model()->findAll('state=:state', array(':state'=>$state));
 
+	  $data=CHtml::listData($data,'city','city');
+	  return $data;
+	}
+	
 
 	/**
 	 * Returns the static model of the specified AR class.

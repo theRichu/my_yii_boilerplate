@@ -120,7 +120,7 @@ class Places extends StoryBoxActiveRecord
 		$criteria->compare('address',$this->address,true);
 		$criteria->compare('state',$this->state,true);
 		$criteria->compare('city',$this->city,true);
-		$criteria->compare('district',$this->distract,true);
+	//	$criteria->compare('district',$this->distract,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('map_lat',$this->map_lat);
 		$criteria->compare('map_lag',$this->map_lag);

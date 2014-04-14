@@ -51,15 +51,23 @@ class RoomsController extends Controller
 public function actionLoadcities()
 {
   fb("loadcities");
-   $data=Places::model()->findAll('state=:state', array(':state'=>$_POST['state']));
- 
-   $data=CHtml::listData($data,'city','city');
- 
-   echo "<option value=''>시/군/구</option>";
-   foreach($data as $value=>$city_name)
-   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($city_name),true);
+  
+  if (Yii::app()->request->isAjaxRequest){
+    $data=Places::model()->findAll('state=:state', array(':state'=>$_POST['state']));    
+    $data=CHtml::listData($data,'city','city');
+
+    echo "<option value=''>시/군/구</option>";
+    foreach($data as $value=>$city_name)
+      echo CHtml::tag('option', array('value'=>$value),CHtml::encode($city_name),true);
+  }
+    
+  else
+  {
+  	
+  }
 }
 
+/* 
 public function actionLoaddistricts()
 {
 
@@ -72,7 +80,7 @@ public function actionLoaddistricts()
   foreach($data as $value=>$district_name)
     echo CHtml::tag('option', array('value'=>$value),CHtml::encode($district_name),true);
 }
- 
+  */
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -220,25 +228,29 @@ public function actionLoaddistricts()
 	  if(isset($_GET['Rooms']))
 	    $model->attributes=$_GET['Rooms'];
 
-
-	  $criteria = new CDbCriteria();
-
 	  if(isset($_GET['state']))
 	  {
-	    $state = $_GET['state'];
+	    fb("STATE!!!1");
+	    $state = array($_GET['state']);
 	  }
 	  if(isset($_GET['city']))
 	  {
-	    $state = $_GET['city'];
+	    //fb("CITY!!!1");
+	  //  $city = array($_GET['city']);
 	  }
+	  
+	  /* 	  if(isset($_GET['district']))
+	   {
+	  $state = $_GET['district'];
+	  } */
+	  	 
 
-	  if(isset($_GET['district']))
-	  {
-	    $state = $_GET['district'];
-	  }
-	  $criteria->with = array( 'Places' );
-	  $criteria->with = array( 'RoomOptions' );
-	  $criteria->with = array( 'RoomCharges' );
+	  $criteria = new CDbCriteria();
+	  $criteria->with = array( 'places' );
+	//  $criteria->with = array( 'roomOptions' );
+	//  $criteria->with = array( 'roomCharges' );
+	  
+
 	   /* 
 	  if(!empty($this->minPrice))
 	    $criteria->addCondition('RoomCharges.price > '.(int)$this->minPrice);
@@ -246,15 +258,22 @@ public function actionLoaddistricts()
 	  if(!empty($this->maxPrice))
 	    $criteria->addCondition('RoomCharges.price < '.(int)$this->maxPrice);
 	    */
-	  if(!empty($this->state))
-	    $criteria->addInCondition('Places.state', $state);
-	  if(!empty($this->city))
-	    $criteria->addInCondition('Places.city', $city);
-	  if(!empty($this->district))
-	    $criteria->addInCondition('Places.district', $district);
-	   
+	  if(!empty($state)){
+	    fb("STATE!!!2");
+	    $criteria->addInCondition('places.state', $state, false);
+	  }
+	  if(!empty($city)){
+	    fb("CITY!!!2");
+	    $criteria->addInCondition('places.city', $city);
+	  }
+/* 	  if(!empty($this->district))
+	    $criteria->addInCondition('places.district', $district);
+ */	   
 	  
-		$dataProvider=new CActiveDataProvider('Rooms');
+		$dataProvider=new CActiveDataProvider('Rooms',
+		  array('criteria'=>$criteria)
+	  );
+		
 
 		$this->render('index',array(
 		  'model'=>$model,

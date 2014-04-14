@@ -34,6 +34,10 @@ if(count($images)){
 	<b><?php echo CHtml::encode($data->getAttributeLabel('place_id')); ?>:</b>
 	<?php echo CHtml::encode($data->place_id); ?>
 	<br />
+	
+		<b><?php echo CHtml::encode($data->getAttributeLabel('place_id')); ?>:</b>
+	<b><?php echo isset ( $data->place_id ) ? CHtml::link(CHtml::encode ( $data->places->name ),array('/', 'places'=>$data->place_id)) : "unknown"; ?></b>
+	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('capacity')); ?>:</b>
 	<?php echo CHtml::encode($data->capacity); ?>

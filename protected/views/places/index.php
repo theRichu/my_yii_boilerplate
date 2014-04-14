@@ -22,10 +22,11 @@ $form = $this->beginWidget(
         'id' => 'searchForm',
         'type' => 'search',
         'method'=> 'get',
+        'action'=> 'places',
         'htmlOptions' => array('class' => 'well well-large'),
     )
 );
-
+?>
  <?php
 echo $form->textFieldRow(
     $model,
@@ -54,9 +55,9 @@ echo $form->textFieldRow(
             array('buttonType' => 'reset', 'label' => 'Reset')
         ); ?>
 
-        <?php 
-$this->endWidget();
-unset($form);
+<?php 
+  $this->endWidget();
+  unset($form);
 ?>
 
 
