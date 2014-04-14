@@ -31,7 +31,7 @@ if(($model->map_lat) && ($model->map_lag)){
   $gMap->setCenter($model->map_lat, $model->map_lag);
   
   $info_box = new EGMapInfoBox('<div style="color:#fff;border: 1px solid black; margin-top: 8px; background: #000; padding: 5px;">'.$model->name.'<br/>'.$model->address.'</div>');
-  
+
   // set the properties
   $info_box->pixelOffset = new EGMapSize('0','-140');
   $info_box->maxWidth = 0;
