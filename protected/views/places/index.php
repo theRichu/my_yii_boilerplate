@@ -26,25 +26,6 @@ $form = $this->beginWidget(
     )
 );
 
- echo $form->dropDownListRow(
-  $model,
-  'state',
-  array('도/광역시', '1', '2', '3', '4', '5')
-        ); 
-
- echo $form->dropDownListRow(
-   $model,
-   'city',
-   array('시/군/구', '1', '2', '3', '4', '5')
- );
- 
- echo $form->dropDownListRow(
-   $model,
-   'district',
-   array('동/면/', '1', '2', '3', '4', '5')
- );
- ?>
-
  <?php
 echo $form->textFieldRow(
     $model,

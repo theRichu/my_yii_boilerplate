@@ -3936,3 +3936,1055 @@ Stack trace:
 REQUEST_URI=/storybox/rooms
 in /var/www/storybox/protected/controllers/RoomsController.php (197)
 in /var/www/storybox/index.php (18)
+2014/04/14 02:42:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested view "forms" was not found.' in /var/www/YiiRoot/framework/web/actions/CViewAction.php:112
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/actions/CViewAction.php(123): CViewAction->resolveView('forms')
+#1 /var/www/YiiRoot/framework/web/actions/CAction.php(76): CViewAction->run()
+#2 /var/www/YiiRoot/framework/web/CController.php(308): CAction->runWithParams(Array)
+#3 /var/www/YiiRoot/framework/web/CController.php(286): CController->runAction(Object(CViewAction))
+#4 /var/www/YiiRoot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('page')
+#6 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#7 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /var/www/storybox/index.php(18): CApplication->run()
+#9 {main}
+REQUEST_URI=/storybox/site/page?view=forms
+HTTP_REFERER=http://dev.modiez.kr/storybox/site/page?view=tables
+---
+2014/04/14 02:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-modal.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-modal.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-alert.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-alert.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-tooltip.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-tooltip.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-scrollspy.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-scrollspy.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-popover.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-popover.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-button.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-button.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-typeahead.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-typeahead.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small1.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small1...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small1.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small2.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small2...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small2.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small3.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small3...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small3.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small4.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small4...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small4.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small5.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small5...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small5.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small2.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small2...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small2.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small5.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small5...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small5.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small4.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small4...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small4.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small3.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small3...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small3.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small1.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small1...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small1.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/loading.gif".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/loading.gif')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/loading.gif
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/close.png".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/close.png')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/close.png
+HTTP_REFERER=http://dev.modiez.kr/storybox/places
+---
+2014/04/14 02:47:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "room".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('room')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/room
+---
+2014/04/14 02:47:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-popover.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-popover.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/room
+---
+2014/04/14 02:47:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-alert.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-alert.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/room
+---
+2014/04/14 02:47:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-scrollspy.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-scrollspy.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/room
+---
+2014/04/14 02:47:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-tooltip.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-tooltip.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/room
+---
+2014/04/14 02:47:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-modal.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-modal.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/room
+---
+2014/04/14 02:47:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-button.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-button.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/room
+---
+2014/04/14 02:47:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-typeahead.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-typeahead.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/room
+---
+2014/04/14 02:47:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/loading.gif".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/loading.gif')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/loading.gif
+HTTP_REFERER=http://dev.modiez.kr/storybox/room
+---
+2014/04/14 02:47:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/close.png".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/close.png')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/close.png
+HTTP_REFERER=http://dev.modiez.kr/storybox/room
+---
+2014/04/14 02:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-modal.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-modal.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-alert.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-alert.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-tooltip.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-tooltip.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-popover.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-popover.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-scrollspy.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-scrollspy.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-button.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-button.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-typeahead.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-typeahead.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small1.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small1...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small1.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small3.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small3...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small3.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small2.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small2...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small2.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small5.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small5...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small5.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:47:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/blog/small4.jpg".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/blog/small4...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/blog/small4.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:47:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/close.png".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/close.png')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/close.png
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:47:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/loading.gif".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('img/loading.gif')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/img/loading.gif
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-alert.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-alert.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-popover.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-popover.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-scrollspy.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-scrollspy.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-modal.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-modal.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-tooltip.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-tooltip.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-button.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-button.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/hebo/js/bootstrap-typeahead.js".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('themes/hebo/js/...')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/themes/hebo/js/bootstrap-typeahead.js
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in /var/www/YiiRoot/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CController.php(270): CController->missingAction('img')
+#1 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('img')
+#2 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms/img/blog/...')
+#3 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/storybox/index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/storybox/rooms/img/blog/small1.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in /var/www/YiiRoot/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CController.php(270): CController->missingAction('img')
+#1 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('img')
+#2 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms/img/blog/...')
+#3 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/storybox/index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/storybox/rooms/img/blog/small2.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in /var/www/YiiRoot/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CController.php(270): CController->missingAction('img')
+#1 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('img')
+#2 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms/img/blog/...')
+#3 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/storybox/index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/storybox/rooms/img/blog/small4.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in /var/www/YiiRoot/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CController.php(270): CController->missingAction('img')
+#1 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('img')
+#2 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms/img/blog/...')
+#3 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/storybox/index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/storybox/rooms/img/blog/small3.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in /var/www/YiiRoot/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CController.php(270): CController->missingAction('img')
+#1 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('img')
+#2 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms/img/blog/...')
+#3 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/storybox/index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/storybox/rooms/img/blog/small5.jpg
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in /var/www/YiiRoot/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CController.php(270): CController->missingAction('img')
+#1 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('img')
+#2 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms/img/close...')
+#3 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/storybox/index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/storybox/rooms/img/close.png
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 02:48:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in /var/www/YiiRoot/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CController.php(270): CController->missingAction('img')
+#1 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('img')
+#2 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms/img/loadi...')
+#3 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/storybox/index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/storybox/rooms/img/loading.gif
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms/2
+---
+2014/04/14 12:46:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "place".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('place')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/place
+HTTP_REFERER=http://dev.modiez.kr/storybox/
+---
+2014/04/14 14:00:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "search".' in /var/www/YiiRoot/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CController.php(270): CController->missingAction('search')
+#1 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('search')
+#2 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms/search')
+#3 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/storybox/index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/storybox/rooms/search
+---
+2014/04/14 14:49:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "search".' in /var/www/YiiRoot/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CController.php(270): CController->missingAction('search')
+#1 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('search')
+#2 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms/search')
+#3 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/storybox/index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/storybox/rooms/search
+---
+2014/04/14 15:01:50 [error] [php] Creating default object from empty value (/var/www/storybox/protected/controllers/RoomsController.php:201)
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): RoomsController->runAction()
+#1 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/YiiRoot/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): RoomsController->filterAccessControl()
+#4 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/YiiRoot/framework/web/CController.php(265): RoomsController->runActionWithFilters()
+#7 /var/www/YiiRoot/framework/web/CWebApplication.php(282): RoomsController->run()
+#8 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/storybox/index.php(18): CWebApplication->run()
+REQUEST_URI=/storybox/rooms
+in /var/www/storybox/protected/controllers/RoomsController.php (201)
+in /var/www/storybox/index.php (18)
+2014/04/14 15:13:01 [error] [exception.CException] exception 'CException' with message 'Property "Rooms.state" is not defined.' in /var/www/YiiRoot/framework/base/CComponent.php:130
+Stack trace:
+#0 /var/www/YiiRoot/framework/db/ar/CActiveRecord.php(145): CComponent->__get('state')
+#1 /var/www/YiiRoot/framework/web/helpers/CHtml.php(2529): CActiveRecord->__get('state')
+#2 /var/www/YiiRoot/framework/web/helpers/CHtml.php(1802): CHtml::resolveValue(Object(Rooms), 'state')
+#3 /var/www/YiiRoot/framework/web/widgets/CActiveForm.php(847): CHtml::activeDropDownList(Object(Rooms), 'state', Array, Array)
+#4 [internal function]: CActiveForm->dropDownList(Object(Rooms), 'state', Array, Array)
+#5 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1226): call_user_func_array(Array, Array)
+#6 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1105): TbActiveForm->inlineFieldRow(Array, Object(Rooms), 'state', Array)
+#7 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(594): TbActiveForm->customFieldRowInternal(Array, Object(Rooms), 'state', Array)
+#8 /var/www/storybox/protected/views/rooms/index.php(41): TbActiveForm->dropDownListRow(Object(Rooms), 'state', Array, Array)
+#9 /var/www/YiiRoot/framework/web/CBaseController.php(126): require('/var/www/storyb...')
+#10 /var/www/YiiRoot/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/storyb...', Array, true)
+#11 /var/www/YiiRoot/framework/web/CController.php(869): CBaseController->renderFile('/var/www/storyb...', Array, true)
+#12 /var/www/YiiRoot/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#13 /var/www/storybox/protected/controllers/RoomsController.php(229): CController->render('index', Array)
+#14 /var/www/YiiRoot/framework/web/actions/CInlineAction.php(49): RoomsController->actionIndex()
+#15 /var/www/YiiRoot/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#17 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#18 /var/www/YiiRoot/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#19 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#20 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#21 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#22 /var/www/YiiRoot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('')
+#24 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms')
+#25 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#26 /var/www/storybox/index.php(18): CApplication->run()
+#27 {main}
+REQUEST_URI=/storybox/rooms
+HTTP_REFERER=http://dev.modiez.kr/storybox/places?q=n&yt0=&q=p&yt0=&q=n&yt0=
+---
+2014/04/14 15:15:13 [error] [exception.CException] exception 'CException' with message 'Property "Rooms.state" is not defined.' in /var/www/YiiRoot/framework/base/CComponent.php:130
+Stack trace:
+#0 /var/www/YiiRoot/framework/db/ar/CActiveRecord.php(145): CComponent->__get('state')
+#1 /var/www/YiiRoot/framework/web/helpers/CHtml.php(2529): CActiveRecord->__get('state')
+#2 /var/www/YiiRoot/framework/web/helpers/CHtml.php(1802): CHtml::resolveValue(Object(Rooms), 'state')
+#3 /var/www/YiiRoot/framework/web/widgets/CActiveForm.php(847): CHtml::activeDropDownList(Object(Rooms), 'state', Array, Array)
+#4 [internal function]: CActiveForm->dropDownList(Object(Rooms), 'state', Array, Array)
+#5 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1226): call_user_func_array(Array, Array)
+#6 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1105): TbActiveForm->inlineFieldRow(Array, Object(Rooms), 'state', Array)
+#7 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(594): TbActiveForm->customFieldRowInternal(Array, Object(Rooms), 'state', Array)
+#8 /var/www/storybox/protected/views/rooms/index.php(41): TbActiveForm->dropDownListRow(Object(Rooms), 'state', Array, Array)
+#9 /var/www/YiiRoot/framework/web/CBaseController.php(126): require('/var/www/storyb...')
+#10 /var/www/YiiRoot/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/storyb...', Array, true)
+#11 /var/www/YiiRoot/framework/web/CController.php(869): CBaseController->renderFile('/var/www/storyb...', Array, true)
+#12 /var/www/YiiRoot/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#13 /var/www/storybox/protected/controllers/RoomsController.php(244): CController->render('index', Array)
+#14 /var/www/YiiRoot/framework/web/actions/CInlineAction.php(49): RoomsController->actionIndex()
+#15 /var/www/YiiRoot/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#17 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#18 /var/www/YiiRoot/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#19 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#20 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#21 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#22 /var/www/YiiRoot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('')
+#24 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms')
+#25 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#26 /var/www/storybox/index.php(18): CApplication->run()
+#27 {main}
+REQUEST_URI=/storybox/rooms
+HTTP_REFERER=http://dev.modiez.kr/storybox/places?q=n&yt0=&q=p&yt0=&q=n&yt0=
+---
+2014/04/14 15:15:37 [error] [exception.CException] exception 'CException' with message 'Property "Rooms.state" is not defined.' in /var/www/YiiRoot/framework/base/CComponent.php:130
+Stack trace:
+#0 /var/www/YiiRoot/framework/db/ar/CActiveRecord.php(145): CComponent->__get('state')
+#1 /var/www/YiiRoot/framework/web/helpers/CHtml.php(2529): CActiveRecord->__get('state')
+#2 /var/www/YiiRoot/framework/web/helpers/CHtml.php(1802): CHtml::resolveValue(Object(Rooms), 'state')
+#3 /var/www/YiiRoot/framework/web/widgets/CActiveForm.php(847): CHtml::activeDropDownList(Object(Rooms), 'state', Array, Array)
+#4 [internal function]: CActiveForm->dropDownList(Object(Rooms), 'state', Array, Array)
+#5 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1226): call_user_func_array(Array, Array)
+#6 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1105): TbActiveForm->inlineFieldRow(Array, Object(Rooms), 'state', Array)
+#7 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(594): TbActiveForm->customFieldRowInternal(Array, Object(Rooms), 'state', Array)
+#8 /var/www/storybox/protected/views/rooms/index.php(41): TbActiveForm->dropDownListRow(Object(Rooms), 'state', Array, Array)
+#9 /var/www/YiiRoot/framework/web/CBaseController.php(126): require('/var/www/storyb...')
+#10 /var/www/YiiRoot/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/storyb...', Array, true)
+#11 /var/www/YiiRoot/framework/web/CController.php(869): CBaseController->renderFile('/var/www/storyb...', Array, true)
+#12 /var/www/YiiRoot/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#13 /var/www/storybox/protected/controllers/RoomsController.php(244): CController->render('index', Array)
+#14 /var/www/YiiRoot/framework/web/actions/CInlineAction.php(49): RoomsController->actionIndex()
+#15 /var/www/YiiRoot/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#17 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#18 /var/www/YiiRoot/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#19 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#20 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#21 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#22 /var/www/YiiRoot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('')
+#24 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms')
+#25 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#26 /var/www/storybox/index.php(18): CApplication->run()
+#27 {main}
+REQUEST_URI=/storybox/rooms
+HTTP_REFERER=http://dev.modiez.kr/storybox/places?q=n&yt0=&q=p&yt0=&q=n&yt0=
+---
+2014/04/14 15:15:38 [error] [exception.CException] exception 'CException' with message 'Property "Rooms.state" is not defined.' in /var/www/YiiRoot/framework/base/CComponent.php:130
+Stack trace:
+#0 /var/www/YiiRoot/framework/db/ar/CActiveRecord.php(145): CComponent->__get('state')
+#1 /var/www/YiiRoot/framework/web/helpers/CHtml.php(2529): CActiveRecord->__get('state')
+#2 /var/www/YiiRoot/framework/web/helpers/CHtml.php(1802): CHtml::resolveValue(Object(Rooms), 'state')
+#3 /var/www/YiiRoot/framework/web/widgets/CActiveForm.php(847): CHtml::activeDropDownList(Object(Rooms), 'state', Array, Array)
+#4 [internal function]: CActiveForm->dropDownList(Object(Rooms), 'state', Array, Array)
+#5 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1226): call_user_func_array(Array, Array)
+#6 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1105): TbActiveForm->inlineFieldRow(Array, Object(Rooms), 'state', Array)
+#7 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(594): TbActiveForm->customFieldRowInternal(Array, Object(Rooms), 'state', Array)
+#8 /var/www/storybox/protected/views/rooms/index.php(41): TbActiveForm->dropDownListRow(Object(Rooms), 'state', Array, Array)
+#9 /var/www/YiiRoot/framework/web/CBaseController.php(126): require('/var/www/storyb...')
+#10 /var/www/YiiRoot/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/storyb...', Array, true)
+#11 /var/www/YiiRoot/framework/web/CController.php(869): CBaseController->renderFile('/var/www/storyb...', Array, true)
+#12 /var/www/YiiRoot/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#13 /var/www/storybox/protected/controllers/RoomsController.php(244): CController->render('index', Array)
+#14 /var/www/YiiRoot/framework/web/actions/CInlineAction.php(49): RoomsController->actionIndex()
+#15 /var/www/YiiRoot/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#17 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#18 /var/www/YiiRoot/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#19 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#20 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#21 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#22 /var/www/YiiRoot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('')
+#24 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms')
+#25 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#26 /var/www/storybox/index.php(18): CApplication->run()
+#27 {main}
+REQUEST_URI=/storybox/rooms
+HTTP_REFERER=http://dev.modiez.kr/storybox/places?q=n&yt0=&q=p&yt0=&q=n&yt0=
+---
+2014/04/14 15:16:22 [error] [exception.CException] exception 'CException' with message 'Property "Rooms.Place.state" is not defined.' in /var/www/YiiRoot/framework/base/CComponent.php:130
+Stack trace:
+#0 /var/www/YiiRoot/framework/db/ar/CActiveRecord.php(145): CComponent->__get('Place.state')
+#1 /var/www/YiiRoot/framework/web/helpers/CHtml.php(2529): CActiveRecord->__get('Place.state')
+#2 /var/www/YiiRoot/framework/web/helpers/CHtml.php(1802): CHtml::resolveValue(Object(Rooms), 'Place.state')
+#3 /var/www/YiiRoot/framework/web/widgets/CActiveForm.php(847): CHtml::activeDropDownList(Object(Rooms), 'Place.state', Array, Array)
+#4 [internal function]: CActiveForm->dropDownList(Object(Rooms), 'Place.state', Array, Array)
+#5 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1226): call_user_func_array(Array, Array)
+#6 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1105): TbActiveForm->inlineFieldRow(Array, Object(Rooms), 'Place.state', Array)
+#7 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(594): TbActiveForm->customFieldRowInternal(Array, Object(Rooms), 'Place.state', Array)
+#8 /var/www/storybox/protected/views/rooms/index.php(41): TbActiveForm->dropDownListRow(Object(Rooms), 'Place.state', Array, Array)
+#9 /var/www/YiiRoot/framework/web/CBaseController.php(126): require('/var/www/storyb...')
+#10 /var/www/YiiRoot/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/storyb...', Array, true)
+#11 /var/www/YiiRoot/framework/web/CController.php(869): CBaseController->renderFile('/var/www/storyb...', Array, true)
+#12 /var/www/YiiRoot/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#13 /var/www/storybox/protected/controllers/RoomsController.php(244): CController->render('index', Array)
+#14 /var/www/YiiRoot/framework/web/actions/CInlineAction.php(49): RoomsController->actionIndex()
+#15 /var/www/YiiRoot/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#17 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#18 /var/www/YiiRoot/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#19 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#20 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#21 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#22 /var/www/YiiRoot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('')
+#24 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms')
+#25 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#26 /var/www/storybox/index.php(18): CApplication->run()
+#27 {main}
+REQUEST_URI=/storybox/rooms
+HTTP_REFERER=http://dev.modiez.kr/storybox/places?q=n&yt0=&q=p&yt0=&q=n&yt0=
+---
+2014/04/14 15:16:30 [error] [exception.CException] exception 'CException' with message 'Property "Rooms.places.state" is not defined.' in /var/www/YiiRoot/framework/base/CComponent.php:130
+Stack trace:
+#0 /var/www/YiiRoot/framework/db/ar/CActiveRecord.php(145): CComponent->__get('places.state')
+#1 /var/www/YiiRoot/framework/web/helpers/CHtml.php(2529): CActiveRecord->__get('places.state')
+#2 /var/www/YiiRoot/framework/web/helpers/CHtml.php(1802): CHtml::resolveValue(Object(Rooms), 'places.state')
+#3 /var/www/YiiRoot/framework/web/widgets/CActiveForm.php(847): CHtml::activeDropDownList(Object(Rooms), 'places.state', Array, Array)
+#4 [internal function]: CActiveForm->dropDownList(Object(Rooms), 'places.state', Array, Array)
+#5 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1226): call_user_func_array(Array, Array)
+#6 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1105): TbActiveForm->inlineFieldRow(Array, Object(Rooms), 'places.state', Array)
+#7 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(594): TbActiveForm->customFieldRowInternal(Array, Object(Rooms), 'places.state', Array)
+#8 /var/www/storybox/protected/views/rooms/index.php(41): TbActiveForm->dropDownListRow(Object(Rooms), 'places.state', Array, Array)
+#9 /var/www/YiiRoot/framework/web/CBaseController.php(126): require('/var/www/storyb...')
+#10 /var/www/YiiRoot/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/storyb...', Array, true)
+#11 /var/www/YiiRoot/framework/web/CController.php(869): CBaseController->renderFile('/var/www/storyb...', Array, true)
+#12 /var/www/YiiRoot/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#13 /var/www/storybox/protected/controllers/RoomsController.php(244): CController->render('index', Array)
+#14 /var/www/YiiRoot/framework/web/actions/CInlineAction.php(49): RoomsController->actionIndex()
+#15 /var/www/YiiRoot/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#17 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#18 /var/www/YiiRoot/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#19 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#20 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#21 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#22 /var/www/YiiRoot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('')
+#24 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms')
+#25 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#26 /var/www/storybox/index.php(18): CApplication->run()
+#27 {main}
+REQUEST_URI=/storybox/rooms
+HTTP_REFERER=http://dev.modiez.kr/storybox/places?q=n&yt0=&q=p&yt0=&q=n&yt0=
+---
+2014/04/14 15:16:45 [error] [php] Trying to get property of non-object (/var/www/YiiRoot/framework/web/helpers/CHtml.php:2529)
+Stack trace:
+#0 unknown(0): TbActiveForm->dropDownList()
+#1 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1226): call_user_func_array()
+#2 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1105): TbActiveForm->inlineFieldRow()
+#3 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(594): TbActiveForm->customFieldRowInternal()
+#4 /var/www/storybox/protected/views/rooms/index.php(41): TbActiveForm->dropDownListRow()
+#5 /var/www/YiiRoot/framework/web/CBaseController.php(126): require()
+#6 /var/www/YiiRoot/framework/web/CBaseController.php(95): RoomsController->renderInternal()
+#7 /var/www/YiiRoot/framework/web/CController.php(869): RoomsController->renderFile()
+#8 /var/www/YiiRoot/framework/web/CController.php(782): RoomsController->renderPartial()
+#9 /var/www/storybox/protected/controllers/RoomsController.php(244): RoomsController->render()
+#10 /var/www/YiiRoot/framework/web/actions/CInlineAction.php(49): RoomsController->actionIndex()
+#11 /var/www/YiiRoot/framework/web/CController.php(308): CInlineAction->runWithParams()
+#12 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): RoomsController->runAction()
+#13 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#14 /var/www/YiiRoot/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#15 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): RoomsController->filterAccessControl()
+#16 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#17 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#18 /var/www/YiiRoot/framework/web/CController.php(265): RoomsController->runActionWithFilters()
+#19 /var/www/YiiRoot/framework/web/CWebApplication.php(282): RoomsController->run()
+#20 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#21 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#22 /var/www/storybox/index.php(18): CWebApplication->run()
+REQUEST_URI=/storybox/rooms
+in /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php (1226)
+in /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php (1105)
+in /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php (594)
+2014/04/14 15:17:48 [error] [exception.CException] exception 'CException' with message 'Property "Rooms.state" is not defined.' in /var/www/YiiRoot/framework/base/CComponent.php:130
+Stack trace:
+#0 /var/www/YiiRoot/framework/db/ar/CActiveRecord.php(145): CComponent->__get('state')
+#1 /var/www/YiiRoot/framework/web/helpers/CHtml.php(2529): CActiveRecord->__get('state')
+#2 /var/www/YiiRoot/framework/web/helpers/CHtml.php(1802): CHtml::resolveValue(Object(Rooms), 'state')
+#3 /var/www/YiiRoot/framework/web/widgets/CActiveForm.php(847): CHtml::activeDropDownList(Object(Rooms), 'state', Array, Array)
+#4 [internal function]: CActiveForm->dropDownList(Object(Rooms), 'state', Array, Array)
+#5 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1226): call_user_func_array(Array, Array)
+#6 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(1105): TbActiveForm->inlineFieldRow(Array, Object(Rooms), 'state', Array)
+#7 /var/www/storybox/protected/extensions/yii-booster/widgets/TbActiveForm.php(594): TbActiveForm->customFieldRowInternal(Array, Object(Rooms), 'state', Array)
+#8 /var/www/storybox/protected/views/rooms/index.php(41): TbActiveForm->dropDownListRow(Object(Rooms), 'state', Array, Array)
+#9 /var/www/YiiRoot/framework/web/CBaseController.php(126): require('/var/www/storyb...')
+#10 /var/www/YiiRoot/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/storyb...', Array, true)
+#11 /var/www/YiiRoot/framework/web/CController.php(869): CBaseController->renderFile('/var/www/storyb...', Array, true)
+#12 /var/www/YiiRoot/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#13 /var/www/storybox/protected/controllers/RoomsController.php(247): CController->render('index', Array)
+#14 /var/www/YiiRoot/framework/web/actions/CInlineAction.php(49): RoomsController->actionIndex()
+#15 /var/www/YiiRoot/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#17 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#18 /var/www/YiiRoot/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#19 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#20 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#21 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#22 /var/www/YiiRoot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#23 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('')
+#24 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms')
+#25 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#26 /var/www/storybox/index.php(18): CApplication->run()
+#27 {main}
+REQUEST_URI=/storybox/rooms
+HTTP_REFERER=http://dev.modiez.kr/storybox/places?q=n&yt0=&q=p&yt0=&q=n&yt0=
+---
+2014/04/14 15:18:03 [error] [php] Invalid argument supplied for foreach() (/var/www/YiiRoot/framework/web/helpers/CHtml.php:2078)
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CBaseController.php(126): require()
+#1 /var/www/YiiRoot/framework/web/CBaseController.php(95): RoomsController->renderInternal()
+#2 /var/www/YiiRoot/framework/web/CController.php(869): RoomsController->renderFile()
+#3 /var/www/YiiRoot/framework/web/CController.php(782): RoomsController->renderPartial()
+#4 /var/www/storybox/protected/controllers/RoomsController.php(247): RoomsController->render()
+#5 /var/www/YiiRoot/framework/web/actions/CInlineAction.php(49): RoomsController->actionIndex()
+#6 /var/www/YiiRoot/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): RoomsController->runAction()
+#8 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /var/www/YiiRoot/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): RoomsController->filterAccessControl()
+#11 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#13 /var/www/YiiRoot/framework/web/CController.php(265): RoomsController->runActionWithFilters()
+#14 /var/www/YiiRoot/framework/web/CWebApplication.php(282): RoomsController->run()
+#15 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/storybox/index.php(18): CWebApplication->run()
+REQUEST_URI=/storybox/rooms
+in /var/www/storybox/protected/models/Rooms.php (150)
+in /var/www/storybox/protected/views/rooms/index.php (44)
+in /var/www/storybox/protected/controllers/RoomsController.php (247)
+2014/04/14 15:18:22 [error] [php] Invalid argument supplied for foreach() (/var/www/YiiRoot/framework/web/helpers/CHtml.php:2078)
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CBaseController.php(126): require()
+#1 /var/www/YiiRoot/framework/web/CBaseController.php(95): RoomsController->renderInternal()
+#2 /var/www/YiiRoot/framework/web/CController.php(869): RoomsController->renderFile()
+#3 /var/www/YiiRoot/framework/web/CController.php(782): RoomsController->renderPartial()
+#4 /var/www/storybox/protected/controllers/RoomsController.php(247): RoomsController->render()
+#5 /var/www/YiiRoot/framework/web/actions/CInlineAction.php(49): RoomsController->actionIndex()
+#6 /var/www/YiiRoot/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): RoomsController->runAction()
+#8 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /var/www/YiiRoot/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): RoomsController->filterAccessControl()
+#11 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#13 /var/www/YiiRoot/framework/web/CController.php(265): RoomsController->runActionWithFilters()
+#14 /var/www/YiiRoot/framework/web/CWebApplication.php(282): RoomsController->run()
+#15 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/storybox/index.php(18): CWebApplication->run()
+REQUEST_URI=/storybox/rooms
+in /var/www/storybox/protected/models/Rooms.php (150)
+in /var/www/storybox/protected/views/rooms/index.php (44)
+in /var/www/storybox/protected/controllers/RoomsController.php (247)
+2014/04/14 15:23:09 [error] [php] Invalid argument supplied for foreach() (/var/www/YiiRoot/framework/web/helpers/CHtml.php:2078)
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CBaseController.php(126): require()
+#1 /var/www/YiiRoot/framework/web/CBaseController.php(95): RoomsController->renderInternal()
+#2 /var/www/YiiRoot/framework/web/CController.php(869): RoomsController->renderFile()
+#3 /var/www/YiiRoot/framework/web/CController.php(782): RoomsController->renderPartial()
+#4 /var/www/storybox/protected/controllers/RoomsController.php(247): RoomsController->render()
+#5 /var/www/YiiRoot/framework/web/actions/CInlineAction.php(49): RoomsController->actionIndex()
+#6 /var/www/YiiRoot/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): RoomsController->runAction()
+#8 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /var/www/YiiRoot/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): RoomsController->filterAccessControl()
+#11 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#13 /var/www/YiiRoot/framework/web/CController.php(265): RoomsController->runActionWithFilters()
+#14 /var/www/YiiRoot/framework/web/CWebApplication.php(282): RoomsController->run()
+#15 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/storybox/index.php(18): CWebApplication->run()
+REQUEST_URI=/storybox/rooms
+in /var/www/storybox/protected/models/Rooms.php (150)
+in /var/www/storybox/protected/views/rooms/index.php (44)
+in /var/www/storybox/protected/controllers/RoomsController.php (247)
+2014/04/14 15:23:11 [error] [php] Invalid argument supplied for foreach() (/var/www/YiiRoot/framework/web/helpers/CHtml.php:2078)
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CBaseController.php(126): require()
+#1 /var/www/YiiRoot/framework/web/CBaseController.php(95): RoomsController->renderInternal()
+#2 /var/www/YiiRoot/framework/web/CController.php(869): RoomsController->renderFile()
+#3 /var/www/YiiRoot/framework/web/CController.php(782): RoomsController->renderPartial()
+#4 /var/www/storybox/protected/controllers/RoomsController.php(247): RoomsController->render()
+#5 /var/www/YiiRoot/framework/web/actions/CInlineAction.php(49): RoomsController->actionIndex()
+#6 /var/www/YiiRoot/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): RoomsController->runAction()
+#8 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /var/www/YiiRoot/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): RoomsController->filterAccessControl()
+#11 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#13 /var/www/YiiRoot/framework/web/CController.php(265): RoomsController->runActionWithFilters()
+#14 /var/www/YiiRoot/framework/web/CWebApplication.php(282): RoomsController->run()
+#15 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/storybox/index.php(18): CWebApplication->run()
+REQUEST_URI=/storybox/rooms
+in /var/www/storybox/protected/models/Rooms.php (150)
+in /var/www/storybox/protected/views/rooms/index.php (44)
+in /var/www/storybox/protected/controllers/RoomsController.php (247)
+2014/04/14 15:24:51 [error] [php] Invalid argument supplied for foreach() (/var/www/YiiRoot/framework/web/helpers/CHtml.php:2078)
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CBaseController.php(126): require()
+#1 /var/www/YiiRoot/framework/web/CBaseController.php(95): RoomsController->renderInternal()
+#2 /var/www/YiiRoot/framework/web/CController.php(869): RoomsController->renderFile()
+#3 /var/www/YiiRoot/framework/web/CController.php(782): RoomsController->renderPartial()
+#4 /var/www/storybox/protected/controllers/RoomsController.php(247): RoomsController->render()
+#5 /var/www/YiiRoot/framework/web/actions/CInlineAction.php(49): RoomsController->actionIndex()
+#6 /var/www/YiiRoot/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): RoomsController->runAction()
+#8 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /var/www/YiiRoot/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): RoomsController->filterAccessControl()
+#11 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#13 /var/www/YiiRoot/framework/web/CController.php(265): RoomsController->runActionWithFilters()
+#14 /var/www/YiiRoot/framework/web/CWebApplication.php(282): RoomsController->run()
+#15 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/storybox/index.php(18): CWebApplication->run()
+REQUEST_URI=/storybox/rooms
+in /var/www/storybox/protected/models/Rooms.php (147)
+in /var/www/storybox/protected/views/rooms/index.php (35)
+in /var/www/storybox/protected/controllers/RoomsController.php (247)
+2014/04/14 15:41:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "loadcities".' in /var/www/YiiRoot/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CController.php(270): CController->missingAction('loadcities')
+#1 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('loadcities')
+#2 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms/loadcitie...')
+#3 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/storybox/index.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/storybox/rooms/loadcities
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 15:41:54 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /var/www/YiiRoot/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /var/www/YiiRoot/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), 'You are not aut...')
+#2 /var/www/YiiRoot/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /var/www/YiiRoot/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/YiiRoot/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/YiiRoot/framework/web/CWebApplication.php(282): CController->run('loadcities')
+#9 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('rooms/loadcitie...')
+#10 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /var/www/storybox/index.php(18): CApplication->run()
+#12 {main}
+REQUEST_URI=/storybox/rooms/loadcities
+HTTP_REFERER=http://dev.modiez.kr/storybox/rooms
+---
+2014/04/14 16:04:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "place".' in /var/www/YiiRoot/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController('place')
+#1 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/storybox/index.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/storybox/place
+HTTP_REFERER=http://dev.modiez.kr/storybox/
+---
+2014/04/14 16:07:38 [error] [php] Use of undefined constant district_name - assumed 'district_name' (/var/www/storybox/protected/controllers/RoomsController.php:72)
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): RoomsController->runAction()
+#1 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/YiiRoot/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): RoomsController->filterAccessControl()
+#4 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/YiiRoot/framework/web/CController.php(265): RoomsController->runActionWithFilters()
+#7 /var/www/YiiRoot/framework/web/CWebApplication.php(282): RoomsController->run()
+#8 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/storybox/index.php(18): CWebApplication->run()
+REQUEST_URI=/storybox/rooms/loaddistricts
+in /var/www/storybox/protected/controllers/RoomsController.php (72)
+in /var/www/storybox/index.php (18)
+2014/04/14 16:09:48 [error] [php] Undefined variable: data (/var/www/storybox/protected/controllers/RoomsController.php:66)
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): RoomsController->runAction()
+#1 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/YiiRoot/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): RoomsController->filterAccessControl()
+#4 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/YiiRoot/framework/web/CController.php(265): RoomsController->runActionWithFilters()
+#7 /var/www/YiiRoot/framework/web/CWebApplication.php(282): RoomsController->run()
+#8 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/storybox/index.php(18): CWebApplication->run()
+REQUEST_URI=/storybox/rooms/loaddistricts
+in /var/www/storybox/protected/controllers/RoomsController.php (66)
+in /var/www/storybox/index.php (18)
+2014/04/14 16:10:31 [error] [php] Use of undefined constant district_name - assumed 'district_name' (/var/www/storybox/protected/controllers/RoomsController.php:73)
+Stack trace:
+#0 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(133): RoomsController->runAction()
+#1 /var/www/YiiRoot/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/YiiRoot/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/YiiRoot/framework/web/filters/CInlineFilter.php(58): RoomsController->filterAccessControl()
+#4 /var/www/YiiRoot/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/YiiRoot/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/YiiRoot/framework/web/CController.php(265): RoomsController->runActionWithFilters()
+#7 /var/www/YiiRoot/framework/web/CWebApplication.php(282): RoomsController->run()
+#8 /var/www/YiiRoot/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/YiiRoot/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/storybox/index.php(18): CWebApplication->run()
+REQUEST_URI=/storybox/rooms/loaddistricts
+in /var/www/storybox/protected/controllers/RoomsController.php (73)
+in /var/www/storybox/index.php (18)

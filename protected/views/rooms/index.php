@@ -26,6 +26,43 @@ $form = $this->beginWidget(
     )
 );
 ?>
+
+
+<?php 
+  echo $form->dropDownList(
+  $model_place,
+  'state',
+   $model->getStateOptions(),
+   array(
+     'prompt'=>'도/광역시',
+     'ajax' => array(
+       'type'=>'POST',
+       'url'=>CController::createUrl('loadcities'),
+       'update'=>'#city_name',
+       'data'=>array('state'=>'js:this.value'),
+      ) 
+)); 
+
+echo CHtml::dropDownList(
+    'city_name',
+    '',
+    array(), 
+    array(
+      'prompt'=>'시/군/구',
+      /* 'ajax' => array(
+        'type'=>'POST',
+        'url'=>CController::createUrl('loaddistricts'),
+        'update'=>'#district_name',
+        'data'=>array('city'=>'js:this.value'),
+      ) */ 
+));
+
+
+//echo CHtml::dropDownList('district_name','', array(), array('prompt'=>'동/면/읍'));
+ ?>
+
+
+
  <?php echo $form->select2Row(
             $model,
             'name',

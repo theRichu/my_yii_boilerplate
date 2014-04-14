@@ -29,7 +29,7 @@ class RoomsController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','loadcities', 'loaddistricts'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -45,7 +45,34 @@ class RoomsController extends Controller
 			),
 		);
 	}
+	
 
+	
+public function actionLoadcities()
+{
+  fb("loadcities");
+   $data=Places::model()->findAll('state=:state', array(':state'=>$_POST['state']));
+ 
+   $data=CHtml::listData($data,'city','city');
+ 
+   echo "<option value=''>시/군/구</option>";
+   foreach($data as $value=>$city_name)
+   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($city_name),true);
+}
+
+public function actionLoaddistricts()
+{
+
+
+  $data=Places::model()->findAll('city=:city', array(':city'=>$_POST['city']));
+  
+  $data=CHtml::listData($data,'district','district');
+  fb($data);
+  echo "<option value=''>동/면/읍</option>";
+  foreach($data as $value=>$district_name)
+    echo CHtml::tag('option', array('value'=>$value),CHtml::encode($district_name),true);
+}
+ 
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -186,14 +213,52 @@ class RoomsController extends Controller
 	{
 	  $model=new Rooms('search');
 	  $model->unsetAttributes();  // clear any default values
+
+	  $model_place=new Places('search');
+	  $model_place->unsetAttributes();  // clear any default values
 	  
 	  if(isset($_GET['Rooms']))
 	    $model->attributes=$_GET['Rooms'];
+
+
+	  $criteria = new CDbCriteria();
+
+	  if(isset($_GET['state']))
+	  {
+	    $state = $_GET['state'];
+	  }
+	  if(isset($_GET['city']))
+	  {
+	    $state = $_GET['city'];
+	  }
+
+	  if(isset($_GET['district']))
+	  {
+	    $state = $_GET['district'];
+	  }
+	  $criteria->with = array( 'Places' );
+	  $criteria->with = array( 'RoomOptions' );
+	  $criteria->with = array( 'RoomCharges' );
+	   /* 
+	  if(!empty($this->minPrice))
+	    $criteria->addCondition('RoomCharges.price > '.(int)$this->minPrice);
+	   
+	  if(!empty($this->maxPrice))
+	    $criteria->addCondition('RoomCharges.price < '.(int)$this->maxPrice);
+	    */
+	  if(!empty($this->state))
+	    $criteria->addInCondition('Places.state', $state);
+	  if(!empty($this->city))
+	    $criteria->addInCondition('Places.city', $city);
+	  if(!empty($this->district))
+	    $criteria->addInCondition('Places.district', $district);
 	   
 	  
 		$dataProvider=new CActiveDataProvider('Rooms');
+
 		$this->render('index',array(
 		  'model'=>$model,
+		  'model_place'=>$model_place,
 			'dataProvider'=>$dataProvider,
 		));
 	}

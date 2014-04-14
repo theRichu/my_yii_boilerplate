@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Storybox',
+  'theme'=>'classic',
 
 	// preloading 'log' component
 	'preload'=>array(

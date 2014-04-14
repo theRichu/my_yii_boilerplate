@@ -93,6 +93,8 @@ class Places extends StoryBoxActiveRecord
 		);
 	}
 
+	
+	
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
@@ -110,6 +112,8 @@ class Places extends StoryBoxActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+		
+		$criteria->with = array( 'Rooms' );
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);

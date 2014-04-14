@@ -115,23 +115,40 @@ class Rooms extends StoryBoxActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		
+//		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('place_id',$this->place_id);
+		$criteria->compare('Places.name',$this->place_name, true);
+		
+		$criteria->compare('RoomOptions.name',$this->option_name, true);
+		$criteria->compare('RoomCharges.price',$this->price, true);
+		
+		
+		
+		//$criteria->compare('place_id',$this->place_id);
 		$criteria->compare('capacity',$this->capacity);
 		$criteria->compare('floorspace',$this->floorspace);
-		$criteria->compare('contactnumber',$this->contactnumber,true);
+		//$criteria->compare('contactnumber',$this->contactnumber,true);
 		$criteria->compare('workstart',$this->workstart,true);
 		$criteria->compare('workto',$this->workto,true);
-		$criteria->compare('create_time',$this->create_time,true);
-		$criteria->compare('create_user_id',$this->create_user_id);
-		$criteria->compare('update_time',$this->update_time,true);
-		$criteria->compare('update_user_id',$this->update_user_id);
+		//$criteria->compare('create_time',$this->create_time,true);
+		//$criteria->compare('create_user_id',$this->create_user_id);
+		//$criteria->compare('update_time',$this->update_time,true);
+		//$criteria->compare('update_user_id',$this->update_user_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+	
+	
+	public function getStateOptions()
+	{
+	  $data=Places::model()->findAll();
+	  $data=CHtml::listData($data,'state','state');
+	  return $data;
+	}
+
 
 	/**
 	 * Returns the static model of the specified AR class.
