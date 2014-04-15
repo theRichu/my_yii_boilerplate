@@ -7,7 +7,6 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create RoomImages', 'url'=>array('create')),
 	array('label'=>'Manage RoomImages', 'url'=>array('admin')),
 );
 ?>

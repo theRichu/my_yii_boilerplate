@@ -15,15 +15,25 @@ return array(
 	  'log',
 	  'bootstrap'
 	),
-
+  'aliases' => array(
+    // yiistrap configuration
+    'bootstrap' => realpath(__DIR__ . '/../extensions/bootstrap'), // change if necessary
+    // yiiwheels configuration
+    'yiiwheels' => realpath(__DIR__ . '/../extensions/yiiwheels'), // change if necessary
+  ),
+  
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
+	  'bootstrap.helpers.TbHtml',
+	  'bootstrap.helpers.TbArray',
+	  'bootstrap.behaviors.TbWidget',
 		'application.components.*',
 	  'application.modules.user.models.*',
 	  'application.modules.user.components.*',
 	  'application.modules.rights.*',
 	  'application.modules.rights.components.*',
+	  'application.helpers.*',
 	   
 	),
 
@@ -62,6 +72,7 @@ return array(
 		
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
+			'generatorPaths' => array('bootstrap.gii'),
 			'password'=>'admin',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('14.39.156.111','::1'),
@@ -71,6 +82,13 @@ return array(
 
 	// application components
 	'components'=>array(
+	'image'=>array(
+	  'class'=>'application.extensions.image.CImageComponent',
+	  // GD or ImageMagick
+	  'driver'=>'GD',
+	  // ImageMagick setup path
+	  'params'=>array('directory'=>'/usr/bin/convert'),
+	),
 		'user'=>array(
 			// enable cookie-based authentication
 //		  'class'=>'RWebUser',
@@ -78,14 +96,22 @@ return array(
     	'allowAutoLogin'=>true,
     	'loginUrl' => array('/user/login'),
 		),
+		'bootstrap' => array(
+		  'class' => 'bootstrap.components.TbApi',
+		),
+		// yiiwheels configuration
+		'yiiwheels' => array(
+		  'class' => 'yiiwheels.YiiWheels',
+		),
 		'authManager'=>array(
 		  'class'=>'RDbAuthManager',
 		),
-		
-		'bootstrap' => array(
+	/*	
+ 		'bootstrap' => array(
 		  'class' => 'ext.yii-booster.components.Bootstrap',
-		),
-		
+		), 
+*/
+
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'showScriptName'=>false,

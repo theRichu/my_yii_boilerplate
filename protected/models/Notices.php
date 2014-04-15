@@ -23,6 +23,37 @@
  */
 class Notices extends StoryBoxActiveRecord
 {
+  
+  const STATUS_OPEN=0;
+  const STATUS_PROCESS=1;
+  const STATUS_CANCELED=2;
+  const STATUS_COMPLETE=3;
+  
+
+  const PAYMENT_ONLINE=0;
+  const PAYMENT_OFFLINE=1;
+  const PAYMENT_TRANSFER=2;
+  
+  
+  public function getStatusOptions()
+  {
+    return array(
+      self::STATUS_OPEN=>'예약 가능',
+      self::STATUS_PROCESS=>'예약 진행중',
+      self::STATUS_CANCELED=>'예약 취소',
+      self::STATUS_COMPLETE=>'예약 완료',
+      );
+  }
+
+  public function getPaymentOptions()
+  {
+    return array(
+      self::PAYMENT_ONLINE=>'무통장 입금',
+      self::PAYMENT_ONLINE=>'현장납부',
+      self::PAYMENT_TRANSFER=>'온라인 송금',
+    );
+  }
+  
 	/**
 	 * @return string the associated database table name
 	 */
@@ -39,15 +70,19 @@ class Notices extends StoryBoxActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('room_id, from, to', 'required'),
-			array('room_id, specialprice, payment, status, create_user_id, update_user_id', 'numerical', 'integerOnly'=>true),
+			array('from, to', 'required'),
+			array('specialprice, payment, status, create_user_id, update_user_id', 'numerical', 'integerOnly'=>true),
 			array('contactnumber', 'length', 'max'=>255),
 			array('create_time, update_time', 'safe'),
+		  
+		  array('from, to ', 'date', 'format'=>array('yyyy-MM-dd hh:mm','yyyy-MM-dd hh:mm'), 'allowEmpty'=>true),
+		  array('to','compare','compareAttribute'=>'from','operator'=>'>','on'=>'insert','message'=>'종료일시는 시작일시 이후여야 합니다.'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, room_id, from, to, specialprice, payment, status, contactnumber, create_time, create_user_id, update_time, update_user_id', 'safe', 'on'=>'search'),
+			array('id, from, to, specialprice, payment, status, contactnumber, create_time, create_user_id, update_time, update_user_id', 'safe', 'on'=>'search'),
 		);
 	}
+
 
 	/**
 	 * @return array relational rules.
@@ -63,7 +98,6 @@ class Notices extends StoryBoxActiveRecord
 		  'updater' => array(self::BELONGS_TO, 'User', 'update_user_id'),
 		);
 	}
-
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */

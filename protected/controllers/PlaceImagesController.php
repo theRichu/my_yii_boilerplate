@@ -16,6 +16,7 @@ class PlaceImagesController extends Controller
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
+		  'placeContext + create', //check to ensure valid project context
 		);
 	}
 
@@ -63,15 +64,35 @@ class PlaceImagesController extends Controller
 	public function actionCreate()
 	{
 		$model=new PlaceImages;
-
+		$model->place_id = $this->_place->id;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['PlaceImages']))
 		{
-			$model->attributes=$_POST['PlaceImages'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+		
+		  $rnd = $random = date(time());
+			$model->setAttributes($_POST['PlaceImages']);
+			
+			$uploadedFile=CUploadedFile::getInstance($model,'filename');
+			
+			$fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
+			$model->filename = $fileName;
+			
+			if ($model->save()) {
+			  $uploadedFile->saveAs(Yii::app()->basePath.'/../upload/place/'.$fileName);  // image will uplode to rootDirectory/banner/
+				
+			  Yii::import('application.extensions.image.Image');
+			  $image = new Image(Yii::app()->basePath.'/../upload/place/'.$fileName);
+			  $image->resize(200, 200);
+			  $image->save(Yii::app()->basePath.'/../upload/place/t_'.$fileName);
+			  	
+			  	
+				if (Yii::app()->getRequest()->getIsAjaxRequest())
+					Yii::app()->end();
+				else
+					$this->redirect(array('view', 'id' => $model->id));
+			}
 		}
 
 		$this->render('create',array(
@@ -169,5 +190,46 @@ class PlaceImagesController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+	
+	
+
+	/**
+	 * @var private property containing the associated Project model instance.
+	 */
+	private $_place = null;
+	/**
+	 * Protected method to load the associated Project model class
+	 * @param integer placeId the primary identifier of the associated Place
+	 * @return object the Place data model based on the primary key
+	 */
+	protected function loadPlace($placeId)
+	{
+	  //if the project property is null, create it based on input id
+	  if($this->_place===null)
+	  {
+	    $this->_place=Places::model()->findByPk($placeId);
+	
+	    if($this->_place===null)
+	    {
+	      throw new CHttpException(404,'The requested place does not exist.');
+	    }
+	  }
+	  return $this->_place;
+	}
+	/**
+	 * In-class defined filter method, configured for use in the above filters()
+	 * method. It is called before the actionCreate() action method is run in
+	 * order to ensure a proper project context
+	 */
+	public function filterPlaceContext($filterChain)
+	{
+	  //set the project identifier based on GET input request variables
+	  if(isset($_GET['pid']))
+	    $this->loadPlace($_GET['pid']);
+	  else
+	    throw new CHttpException(403,'Must specify a place before performing this action.');
+	  //complete the running of other filters and execute the requested action
+	  $filterChain->run();
 	}
 }

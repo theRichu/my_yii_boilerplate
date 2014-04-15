@@ -13,6 +13,7 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+  'htmlOptions'=>array('enctype' => 'multipart/form-data')
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -31,17 +32,21 @@
 		<?php echo $form->error($model,'caption'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'filename'); ?>
-		<?php echo $form->textField($model,'filename',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'filename'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'place_id'); ?>
-		<?php echo $form->textField($model,'place_id'); ?>
-		<?php echo $form->error($model,'place_id'); ?>
-	</div>
+		<div class="row">
+        <?php echo $form->labelEx($model,'filename'); ?>
+        <?php echo CHtml::activeFileField($model, 'filename'); ?>  
+        <?php echo $form->error($model,'filename'); ?>
+    </div>
+    
+    <?php if($model->isNewRecord!='1'){ ?>
+    <div class="row">
+         <?php echo CHtml::image(Yii::app()->request->baseUrl.'/upload/place/'.$model->filename,"filename",array("width"=>200)); ?>
+    </div>
+		<?php }?>
+	
+	
+
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

@@ -29,6 +29,11 @@ abstract class StoryBoxActiveRecord extends CActiveRecord {
 		  'ESaveRelatedBehavior' => array(
 		    'class' => 'application.components.ESaveRelatedBehavior'
 		  ),
+		  
+		       
+		  
+		  
+		  
 		);
 	}
 }

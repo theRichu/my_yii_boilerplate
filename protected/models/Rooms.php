@@ -96,7 +96,7 @@ class Rooms extends StoryBoxActiveRecord
 			'update_user_id' => 'Update User',
 		);
 	}
-
+	
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
@@ -118,12 +118,6 @@ class Rooms extends StoryBoxActiveRecord
 		
 //		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('Places.name',$this->place_name, true);
-		
-		$criteria->compare('RoomOptions.name',$this->option_name, true);
-		$criteria->compare('RoomCharges.price',$this->price, true);
-		
-		
 		
 		//$criteria->compare('place_id',$this->place_id);
 		$criteria->compare('capacity',$this->capacity);
@@ -141,20 +135,6 @@ class Rooms extends StoryBoxActiveRecord
 		));
 	}
 	
-	
-	public function getStateOptions()
-	{
-	  $data=Places::model()->findAll();
-	  $data=CHtml::listData($data,'state','state');
-	  return $data;
-	}
-	public function getCityOptions($state)
-	{
-	  $data=Places::model()->findAll('state=:state', array(':state'=>$state));
-
-	  $data=CHtml::listData($data,'city','city');
-	  return $data;
-	}
 	
 
 	/**

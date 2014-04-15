@@ -32,6 +32,9 @@
 		<?php echo $form->error($model,'content'); ?>
 	</div>
 		
+		
+		
+		
 		<div class="row">
         <?php echo $form->labelEx($model,'filename'); ?>
         <?php echo CHtml::activeFileField($model, 'filename'); ?>  

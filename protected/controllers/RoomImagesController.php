@@ -64,30 +64,38 @@ class RoomImagesController extends Controller
 	public function actionCreate()
 	{
 		$model=new RoomImages;
-
+		$model->room_id = $this->_room->id;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 	if (isset($_POST['RoomImages'])) {
-		  $model->room_id = $this->_room->id;
+
 		  
 		  $rnd = $random = date(time());
 			$model->setAttributes($_POST['RoomImages']);
 			
 			$uploadedFile=CUploadedFile::getInstance($model,'filename');
-			fb($uploadedFile);
+
 			$fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
 			$model->filename = $fileName;
 			
 			if ($model->save()) {
 			  $uploadedFile->saveAs(Yii::app()->basePath.'/../upload/room/'.$fileName);  // image will uplode to rootDirectory/banner/
+			  
+			  Yii::import('application.extensions.image.Image');
+			  $image = new Image(Yii::app()->basePath.'/../upload/room/'.$fileName);
+			  $image->resize(200, 200);
+			  $image->save(Yii::app()->basePath.'/../upload/room/t_'.$fileName);
+			  
+			  
+			  
 				if (Yii::app()->getRequest()->getIsAjaxRequest())
 					Yii::app()->end();
 				else
 					$this->redirect(array('view', 'id' => $model->id));
 			}
 		}
-		$this->render('update', array(
+		$this->render('create', array(
 		  'model' => $model,
 		));
 	}
@@ -222,8 +230,8 @@ class RoomImagesController extends Controller
 	public function filterRoomContext($filterChain)
 	{
 	  //set the project identifier based on GET input request variables
-	  if(isset($_GET['pid']))
-	    $this->loadRoom($_GET['pid']);
+	  if(isset($_GET['rid']))
+	    $this->loadRoom($_GET['rid']);
 	  else
 	    throw new CHttpException(403,'Must specify a room before performing this action.');
 	  //complete the running of other filters and execute the requested action

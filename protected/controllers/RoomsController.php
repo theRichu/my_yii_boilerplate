@@ -219,65 +219,61 @@ public function actionLoaddistricts()
 	 */
 	public function actionIndex()
 	{
-	  $model=new Rooms('search');
+	 // $model=new Rooms('search');
+	  $model=new SearchRooms();
 	  $model->unsetAttributes();  // clear any default values
-
-	  $model_place=new Places('search');
-	  $model_place->unsetAttributes();  // clear any default values
+	  	 
+	  //$model_place=new Places('search');
+	  //$model_place->unsetAttributes();  // clear any default values
 	  
 	  if(isset($_GET['Rooms']))
 	    $model->attributes=$_GET['Rooms'];
-
 	  if(isset($_GET['state']))
-	  {
-	    fb("STATE!!!1");
 	    $state = array($_GET['state']);
-	  }
 	  if(isset($_GET['city']))
-	  {
-	    //fb("CITY!!!1");
-	  //  $city = array($_GET['city']);
-	  }
-	  
+	    $city = array($_GET['city']);
+	  if(isset($_GET['max']))
+	    $max_price = $_GET['max'];
+	  if(isset($_GET['min']))
+	    $min_price = $_GET['min'];
+
+
 	  /* 	  if(isset($_GET['district']))
 	   {
 	  $state = $_GET['district'];
-	  } */
-	  	 
+	  } 
+	  
+	  */
 
 	  $criteria = new CDbCriteria();
 	  $criteria->with = array( 'places' );
-	//  $criteria->with = array( 'roomOptions' );
-	//  $criteria->with = array( 'roomCharges' );
-	  
-
-	   /* 
-	  if(!empty($this->minPrice))
-	    $criteria->addCondition('RoomCharges.price > '.(int)$this->minPrice);
-	   
-	  if(!empty($this->maxPrice))
-	    $criteria->addCondition('RoomCharges.price < '.(int)$this->maxPrice);
-	    */
-	  if(!empty($state)){
-	    fb("STATE!!!2");
+	  //$criteria->with = array( 'roomCharges' );
+   
+	  if(isset($state) && $state!=['']){
 	    $criteria->addInCondition('places.state', $state, false);
 	  }
-	  if(!empty($city)){
-	    fb("CITY!!!2");
-	    $criteria->addInCondition('places.city', $city);
+	  if(isset($city) && $city!=['']){
+	    $criteria->addInCondition('places.city', $city, false);
 	  }
-/* 	  if(!empty($this->district))
+/* 
+	  if(!empty($this->district))
 	    $criteria->addInCondition('places.district', $district);
- */	   
+*/	  
+ 	  //if(isset($max_price) && $max_price!='')
+	   // $criteria->addCondition('roomCharges.price > '.$max_price);
 	  
+	  //if(isset($min_price) && $min_price!='')
+	  //  $criteria->addCondition('roomCharges.price < '.$min_price);
+	   
 		$dataProvider=new CActiveDataProvider('Rooms',
 		  array('criteria'=>$criteria)
-	  );
-		
 
+		);
+
+	  
+	
 		$this->render('index',array(
 		  'model'=>$model,
-		  'model_place'=>$model_place,
 			'dataProvider'=>$dataProvider,
 		));
 	}

@@ -22,6 +22,9 @@ class PlaceImages extends StoryBoxActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+  
+  public $image;
+  
 	public function tableName()
 	{
 		return '{{place_images}}';
@@ -35,13 +38,13 @@ class PlaceImages extends StoryBoxActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('filename, place_id', 'required'),
-			array('place_id, create_user_id, update_user_id', 'numerical', 'integerOnly'=>true),
-			array('title, filename', 'length', 'max'=>255),
+
+			array('create_user_id, update_user_id', 'numerical', 'integerOnly'=>true),
+			array('title', 'length', 'max'=>255),
 			array('caption, create_time, update_time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, caption, filename, place_id, create_time, create_user_id, update_time, update_user_id', 'safe', 'on'=>'search'),
+			array('id, title, caption, create_time, create_user_id, update_time, update_user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,6 +57,8 @@ class PlaceImages extends StoryBoxActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'place' => array(self::BELONGS_TO, 'Places', 'place_id'),
+		  'creater' => array(self::BELONGS_TO, 'User', 'create_user_id'),
+		  'updater' => array(self::BELONGS_TO, 'User', 'update_user_id'),
 		);
 	}
 

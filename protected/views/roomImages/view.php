@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List RoomImages', 'url'=>array('index')),
-	array('label'=>'Create RoomImages', 'url'=>array('create')),
+	array('label'=>'Create RoomImages', 'url'=>array('create', 'rid'=>$model->room_id)),
 	array('label'=>'Update RoomImages', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Delete RoomImages', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage RoomImages', 'url'=>array('admin')),

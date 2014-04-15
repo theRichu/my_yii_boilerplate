@@ -14,51 +14,8 @@ $this->menu=array(
 
 <h1>Places</h1>
 
-<?php 
-/** @var TbActiveForm $form */
-$form = $this->beginWidget(
-    'bootstrap.widgets.TbActiveForm',
-    array(
-        'id' => 'searchForm',
-        'type' => 'search',
-        'method'=> 'get',
-        'action'=> 'places',
-        'htmlOptions' => array('class' => 'well well-large'),
-    )
-);
-?>
- <?php
-echo $form->textFieldRow(
-    $model,
-    'textField',
-    array(
-        'class' => 'input-medium',
-        'name'=>'q',
-        'value'=>isset($_GET['q']) ? CHtml::encode($_GET['q']) : '',
-    ),
-    array(
-        'prepend' => '<i class="icon-search"></i>'
-    )
-);
-?>
 
-<?php $this->widget(
-            'bootstrap.widgets.TbButton',
-            array(
-                'buttonType' => 'submit',
-                'type' => 'primary',
-                'label' => 'Submit'
-            )
-        ); ?>
-        <?php $this->widget(
-            'bootstrap.widgets.TbButton',
-            array('buttonType' => 'reset', 'label' => 'Reset')
-        ); ?>
 
-<?php 
-  $this->endWidget();
-  unset($form);
-?>
 
 <?php 
   Yii::import('ext.EGMAP.*');
@@ -87,7 +44,7 @@ echo $form->textFieldRow(
     $info_box[$i]->closeBoxMargin = '"10px 2px 2px 2px"';
     $info_box[$i]->infoBoxClearance = new EGMapSize(1,1);
     $info_box[$i]->enableEventPropagation ='"floatPane"';
-    fb($info_box[$i]);
+
     // with the second info box, we don't need to
     // set its properties as we are sharing a global
     // Create marker

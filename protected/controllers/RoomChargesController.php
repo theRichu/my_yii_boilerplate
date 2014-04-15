@@ -16,6 +16,7 @@ class RoomChargesController extends Controller
 		return array(
 			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
+		  'roomContext + create', //check to ensure valid room context
 		);
 	}
 
@@ -63,6 +64,7 @@ class RoomChargesController extends Controller
 	public function actionCreate()
 	{
 		$model=new RoomCharges;
+		$model->room_id = $this->_room->id;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -170,4 +172,44 @@ class RoomChargesController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
+	/**
+	 * @var private property containing the associated Room model instance.
+	 */
+	private $_room = null;
+	/**
+	 * Protected method to load the associated Room model class
+	 * @param integer placeId the primary identifier of the associated Place
+	 * @return object the Room data model based on the primary key
+	 */
+	protected function loadRoom($roomId)
+	{
+	  //if the project property is null, create it based on input id
+	  if($this->_room===null)
+	  {
+	    $this->_room=Rooms::model()->findByPk($roomId);
+	
+	    if($this->_room===null)
+	    {
+	      throw new CHttpException(404,'The requested place does not exist.');
+	    }
+	  }
+	  return $this->_room;
+	}
+	/**
+	 * In-class defined filter method, configured for use in the above filters()
+	 * method. It is called before the actionCreate() action method is run in
+	 * order to ensure a proper project context
+	 */
+	public function filterRoomContext($filterChain)
+	{
+	  //set the project identifier based on GET input request variables
+	  if(isset($_GET['rid']))
+	    $this->loadRoom($_GET['rid']);
+	  else
+	    throw new CHttpException(403,'Must specify a room before performing this action.');
+	  //complete the running of other filters and execute the requested action
+	  $filterChain->run();
+	}
+	
 }

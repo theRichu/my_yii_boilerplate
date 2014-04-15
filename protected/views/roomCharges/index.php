@@ -7,7 +7,6 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create RoomCharges', 'url'=>array('create')),
 	array('label'=>'Manage RoomCharges', 'url'=>array('admin')),
 );
 ?>

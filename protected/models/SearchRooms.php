@@ -1,11 +1,16 @@
 <?php 
 class SearchRooms extends CFormModel
 {
-    public $minPrice;
-    public $maxPrice;
+    public $min_price;
+    public $max_price;
+    public $current_max;
+    public $current_min;
+    
     public $state;
     public $city;
-    public $district;
+//    public $district;
+    public $option;
+    public $name;
     
     // Add a public property for each search form element here
 
@@ -13,36 +18,41 @@ class SearchRooms extends CFormModel
     {
         return array(
             // You should validate your search parameters here
-            array('minPrice,maxPrice,state,city,district', 'safe'),
+            array('min_price,max_price,state,city,name', 'safe'),
         );
     }
 
-    public function search()
+    
+    public function getCurrentMaxPrice()
     {
-        $criteria = new CDbCriteria;
-        $criteria->with = array( 'RoomCharges' );
-        
-        if(!empty($this->minPrice))
-            $criteria->addCondition('RoomCharges.price > '.(int)$this->minPrice);
-
-        if(!empty($this->maxPrice))
-            $criteria->addCondition('RoomCharges.price < '.(int)$this->maxPrice);
-
-        if(!empty($this->state))
-            $criteria->addInCondition('state', $this->state);
-        if(!empty($this->city))
-          $criteria->addInCondition('city', $this->city);
-        if(!empty($this->district))
-          $criteria->addInCondition('district', $this->district);
-        
-        
-        // Add more conditions for each property here
-
-        return new CActiveDataProvider('Place', array(
-            'criteria' => $criteria,
-            // more options here, e.g. sorting, pagination, ...
-        ));
+      return (int)Yii::app()->db->createCommand()
+      ->select('max(price) as max')
+      ->from('tbl_room_charges')
+      ->queryScalar();
     }
+    
+    public function getCurrentMinPrice()
+    {
+      return (int)Yii::app()->db->createCommand()
+      ->select('min(price) as min')
+      ->from('tbl_room_charges')
+      ->queryScalar();
+    }
+    
+    public function getStateOptions()
+    {
+      $data=Places::model()->findAll();
+      $data=CHtml::listData($data,'state','state');
+      return $data;
+    }
+    public function getCityOptions($state)
+    {
+      $data=Places::model()->findAll('state=:state', array(':state'=>$state));
+      $data=CHtml::listData($data,'city','city');
+      return $data;
+    }
+
+    
 }
 
 ?>

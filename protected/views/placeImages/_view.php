@@ -18,7 +18,9 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('filename')); ?>:</b>
+
 	<?php echo CHtml::encode($data->filename); ?>
+		<?php echo CHtml::image(Yii::app()->baseUrl."/upload/place/".$data->filename); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('place_id')); ?>:</b>

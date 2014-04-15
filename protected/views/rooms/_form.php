@@ -47,15 +47,11 @@
 		<?php echo $form->labelEx($model,'workstart'); ?>
 		<?php 
         $this->widget(
-            'bootstrap.widgets.TbTimePicker',
+                'yiiwheels.widgets.timepicker.WhTimePicker',
             array(
                 'name' => 'Rooms[workstart]',
-                'value' => '09:00',
-                'noAppend' => true,
-                'options' => array(
-                    'disableFocus' => true, // mandatory
-                    'showMeridian' => false // irrelevant
-                )
+                'value' => '09:00 AM',
+
             )
         );        		
 		?>
@@ -66,15 +62,11 @@
 		<?php echo $form->labelEx($model,'workto'); ?>
 				<?php 
         $this->widget(
-            'bootstrap.widgets.TbTimePicker',
+                'yiiwheels.widgets.timepicker.WhTimePicker',
             array(
                 'name' => 'Rooms[workto]',
-                'value' => '18:00',
-                'noAppend' => true,
-                'options' => array(
-                  'disableFocus' => true, // mandatory
-                  'showMeridian' => false // irrelevant
-                )
+                'value' => '06:00 PM',
+
             )
         );        		
 		?>

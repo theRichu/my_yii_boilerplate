@@ -20,18 +20,12 @@ $form = $this->beginWidget(
     'bootstrap.widgets.TbActiveForm',
     array(
         'id' => 'searchForm',
-        'type' => 'search',
+      //  'type' => 'search',
         'method'=> 'get',
         'action'=> 'rooms',
         'htmlOptions' => array('class' => 'well well-large'),
     )
 );
-?>
-
-
-
-
-<?php 
 
 $state = (isset($_GET['state']))?$_GET['state']:'';
 $city = (isset($_GET['city']))?$_GET['city']:'';
@@ -48,7 +42,7 @@ $state_setting = array(
     $state=>array('selected'=>'selected'),
   )
 );
-fb($state_setting);
+
   echo CHtml::dropDownList(
    'state',
    'state',
@@ -88,12 +82,8 @@ echo CHtml::dropDownList(
   'data'=>array('city'=>'js:this.value'),
 ) */
 //echo CHtml::dropDownList('district_name','', array(), array('prompt'=>'동/면/읍'));
- ?>
 
-
-
- <?php 
- /*echo $form->select2Row(
+/*echo $form->select2Row(
             $model,
             'name',
             array(
@@ -106,10 +96,10 @@ echo CHtml::dropDownList(
                 )
             )
         );
-*/?>
- 
- <?php
-echo $form->textFieldRow(
+*/
+
+
+echo $form->textField(
     $model,
     'textField',
     array(
@@ -121,49 +111,37 @@ echo $form->textFieldRow(
         'prepend' => '<i class="icon-search"></i>'
     )
 );
-?>
 
-    <?php 
-    /*
-    // range slider
+$max = (isset($_GET['max']))?$_GET['max']:80000;
+$min = (isset($_GET['min']))?$_GET['min']:20000;
     $this->widget('zii.widgets.jui.CJuiSlider', array(
+      'id'=>'amtSlider',
       'options'=>array(
-        'min'=>10,
-        'max'=>50,
+        'max'=>$model->getCurrentMaxPrice(),
+        'min'=>$model->getCurrentMinPrice(),
+        'step'=>1000,
         'range'=>true,
-        'values'=>array(5, 20)
+        'values'=>array($min,$max),
+        'slide'=>'js:function(event, ui) { 
+            $("#min").val(ui.values[0]);
+            $("#max").val(ui.values[1]);
+        }',
       ),
-    ));
-    */
-    ?>
- <?php
- /*
-echo $form->textFieldRow(
-    $model,
-    'textField',
-    array(
-        'class' => 'input-medium',
-        'name'=>'capacity',
-        'value'=>isset($_GET['c']) ? CHtml::encode($_GET['c']) : '',
-    )
-);*/
-?>
-<?php $this->widget(
-            'bootstrap.widgets.TbButton',
-            array(
-                'buttonType' => 'submit',
-                'type' => 'primary',
-                'label' => 'Submit'
-            )
-        ); ?>
-        <?php $this->widget(
-            'bootstrap.widgets.TbButton',
-            array('buttonType' => 'reset', 'label' => 'Reset')
-        ); ?>
+  ));
+    
 
-        <?php 
+echo CHtml::textField('min',  $min , array('id'=>'min')); 
+echo CHtml::textField('max', $max , array('id'=>'max')); 
+?>
+<?php echo TbHtml::formActions(array(
+    TbHtml::submitButton('Save changes', array('color' => TbHtml::BUTTON_COLOR_PRIMARY)),
+    TbHtml::button('Cancel'),
+)); ?>
+<?php 
+        
 $this->endWidget();
 unset($form);
+
 ?>
 
 

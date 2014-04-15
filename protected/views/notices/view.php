@@ -9,7 +9,6 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Notices', 'url'=>array('index')),
-	array('label'=>'Create Notices', 'url'=>array('create')),
 	array('label'=>'Update Notices', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Delete Notices', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Notices', 'url'=>array('admin')),

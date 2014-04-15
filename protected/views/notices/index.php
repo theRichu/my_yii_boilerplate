@@ -7,7 +7,6 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Notices', 'url'=>array('create')),
 	array('label'=>'Manage Notices', 'url'=>array('admin')),
 );
 ?>

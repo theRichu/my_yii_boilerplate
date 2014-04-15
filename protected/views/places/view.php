@@ -10,6 +10,8 @@ $this->breadcrumbs=array(
 $this->menu=array(
  
   array('label'=>'여기에 ' . Yii::t('app', '강의실 등록하기') , 'url'=>array('rooms/create','pid'=>$model->id)),
+  array('label'=>$model->label() . Yii::t('app', '사진 등록하기') , 'url'=>array('placeImages/create','pid'=>$model->id)),
+  
   array('label'=>$model->label(2). ' ' . Yii::t('app', '더 보기'), 'url'=>array('index')),
   array('label'=>$model->label(). ' ' . Yii::t('app', '등록하기'), 'url'=>array('create')),
   array('label'=>$model->label(). ' ' . Yii::t('app', '수정') , 'url'=>array('update', 'id' => $model->id)),
@@ -19,6 +21,38 @@ $this->menu=array(
 ?>
 
 <h1><?php echo $model->name; ?></h1>
+
+
+<?php
+$images = array();
+foreach ($model->placeImages as $record) {
+  $images[] = array(
+    
+        'url' => Yii::app()->request->baseUrl . '/upload/place/' . $record->filename,
+        'src' => Yii::app()->request->baseUrl . '/upload/place/t_' . $record->filename,
+          'options' => array('title' => $record->title)
+  );
+}
+if (count($images)) {
+ $this->widget('yiiwheels.widgets.gallery.WhCarousel', array('items' => $images));
+ }
+?>
+
+<br />
+<h1>Place Images</h1>
+
+<?php $this->widget('yiiwheels.widgets.gallery.WhGallery', array('items' => $images));?>
+
+
+
+
+
+
+<h2>공간들</h2>
+<?php $this->widget('zii.widgets.CListView', array(
+    'dataProvider'=>$roomsDataProvider,
+    'itemView'=>'/rooms/_view',
+)); ?>
 <?php 
 if(($model->map_lat) && ($model->map_lag)){
   Yii::import('ext.EGMAP.*');
@@ -26,7 +60,7 @@ if(($model->map_lat) && ($model->map_lag)){
   $gMap = new EGMap();
   $gMap->setJsName('test_map');
   $gMap->width = '100%';
-  $gMap->height = '200';
+  $gMap->height = '300';
   $gMap->zoom = 13;
   $gMap->setCenter($model->map_lat, $model->map_lag);
   
@@ -55,6 +89,7 @@ if(($model->map_lat) && ($model->map_lag)){
   $gMap->renderMap();
 }
 ?>
+
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
@@ -77,12 +112,5 @@ if(($model->map_lat) && ($model->map_lag)){
       'value' => isset ( $model->update_user_id ) ? CHtml::link(CHtml::encode ( $model->updater->username ),array('user/user/view', 'id'=>$model->update_user_id)) : "unknown"
     ),
 	),
-)); ?>
-
-
-<h2>공간들</h2>
-<?php $this->widget('zii.widgets.CListView', array(
-    'dataProvider'=>$roomsDataProvider,
-    'itemView'=>'/rooms/_view',
 )); ?>
 
