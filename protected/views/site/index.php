@@ -2,8 +2,9 @@
 /* @var $this SiteController */
 
 $this->pageTitle=Yii::app()->name;
-fb( dirname(__FILE__).DIRECTORY_SEPARATOR. "../extension/bootstrap/");
 ?>
+<?php echo TbHtml::alert(TbHtml::ALERT_COLOR_SUCCESS, 'Notify'); ?>
+
 <?php $items = array(
 	array(
 		'url' => 'http://farm8.static.flickr.com/7429/9478294690_51ae7eb6c9_b.jpg',

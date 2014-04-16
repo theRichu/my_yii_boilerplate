@@ -138,8 +138,26 @@ class Rooms extends StoryBoxActiveRecord
 		));
 	}
 	
+	function addComment(RoomComments $comment){
+	  $comment->room_id = $this->id;
+	  
+	  // creating event class instance
+	  $event = new NewCommentEvent($this);
+	  $event->post = $this;
+	  $event->comment = $comment;
+	  
+	  // triggering event
 	
-
+	  $this->onNewComment($event);
+	  return $event->isValid;
+	  }
+	  // defining onNewComment event
+	  public function onNewComment($event) {
+	    // Event is actually triggered here. This way we can use
+	    // onNewComment method instead of raiseEvent.
+	    $this->raiseEvent('onNewComment', $event);
+	  }
+	   
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
