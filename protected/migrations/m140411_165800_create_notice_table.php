@@ -18,7 +18,7 @@ class m140411_165800_create_notice_table extends CDbMigration
 	    'update_time' => 'datetime DEFAULT NULL',
 	    'update_user_id' => 'integer DEFAULT NULL',
 	  ), 'ENGINE=InnoDB');
-	  $this->addForeignKey("fk_rooms_notices", "tbl_notices", "room_id", "tbl_rooms", "id", "CASCADE", "RESTRICT");
+	  $this->addForeignKey("fk_rooms_notices", "tbl_notices", "room_id", "tbl_rooms", "id", "CASCADE", "CASCADE");
 
 	  
 	  $this->createTable('tbl_reservations', array(
@@ -37,7 +37,7 @@ class m140411_165800_create_notice_table extends CDbMigration
 	    'update_time' => 'datetime DEFAULT NULL',
 	    'update_user_id' => 'integer DEFAULT NULL',
 	  ), 'ENGINE=InnoDB');
-	  $this->addForeignKey("fk_notices_reservations", "tbl_reservations", "notice_id", "tbl_notices", "id", "CASCADE", "RESTRICT");
+	  $this->addForeignKey("fk_notices_reservations", "tbl_reservations", "notice_id", "tbl_notices", "id", "CASCADE", "CASCADE");
 
 	  $this->createTable('tbl_reservation_comments', array(
 	    'id' => 'pk',

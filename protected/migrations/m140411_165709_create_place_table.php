@@ -42,7 +42,7 @@ class m140411_165709_create_place_table extends CDbMigration
 	    'update_time' => 'datetime DEFAULT NULL',
 	    'update_user_id' => 'integer DEFAULT NULL',
 	  ), 'ENGINE=InnoDB');
-	  $this->addForeignKey("fk_places_place_images", "tbl_place_images", "place_id", "tbl_places", "id", "NO ACTION", "RESTRICT");
+	  $this->addForeignKey("fk_places_place_images", "tbl_place_images", "place_id", "tbl_places", "id", "CASCADE", "CASCADE");
 	   
 	  $this->createTable('tbl_place_comments', array(
 	    'id' => 'pk',
@@ -54,7 +54,7 @@ class m140411_165709_create_place_table extends CDbMigration
 	    'update_time' => 'datetime DEFAULT NULL',
 	    'update_user_id' => 'integer DEFAULT NULL',
 	  ), 'ENGINE=InnoDB');
-	  $this->addForeignKey("fk_places_place_comments", "tbl_place_comments", "place_id", "tbl_places", "id", "NO ACTION", "RESTRICT");
+	  $this->addForeignKey("fk_places_place_comments", "tbl_place_comments", "place_id", "tbl_places", "id", "CASCADE", "CASCADE");
 	}
 
 	public function down()

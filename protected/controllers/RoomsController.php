@@ -126,6 +126,12 @@ public function actionLoaddistricts()
 	  ));
 	}
 
+	
+	public function actionTest(){
+		$model=new Rooms;
+		$model->place_id = $this->_place->id;
+	
+	}
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -136,33 +142,62 @@ public function actionLoaddistricts()
 		$model->place_id = $this->_place->id;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		$related = array();
+		$images = array();
 		if(isset($_POST['Rooms']))
 		{
 			$model->attributes=$_POST['Rooms'];
-
+			
 			if (isset($_POST['RoomCharges'])) {
 			  $model->roomCharges = $_POST['RoomCharges'];
-			  //			  fb($model->roomCharges);
-			  $model->saveWithRelated('roomCharges');
+			  $related[] = 'roomCharges';
 			}
 
 			if (isset($_POST['RoomOptions'])) {
 			  $model->roomOptions = $_POST['RoomOptions'];
-			  //			  fb($model->roomOptions);
-			  $model->saveWithRelated('roomOptions');
+			   $related[] = 'roomOptions';
 			}
 			if (isset($_POST['RoomImages'])) {
-			  $model->roomImages = $_POST['RoomImages'];
-			  	
-			  $model->saveWithRelated('roomImages');
+				//$model->roomImages = $_POST['RoomImages'];
+				
+					foreach ( $_POST['RoomImages'] as $i => $roomImage ) {
+						$image = new RoomImages ();
+						$image->setAttributes ( $roomImage );
+						$rnd = $random = date ( time () );
+						$image->photo = CUploadedFile::getInstance ( $image, "[$i]photo" );
+						$fileName = "{$rnd}-{$image->photo->getName()}"; // random number + file name
+						$image->filename = $fileName;
+						$image->photo->saveAs ( Yii::app ()->basePath . '/../upload/room/' . $fileName ); // image will uplode to rootDirectory/banner/
+						Yii::import ( 'application.extensions.image.Image' );
+						$thumb = new Image ( Yii::app ()->basePath . '/../upload/room/' . $fileName );
+						$thumb->resize ( 200, 200 );
+						$thumb->save ( Yii::app ()->basePath . '/../upload/room/t_' . $fileName );
+						// @FIXME : 일단 올리고보자..?
+						if ($image->validate ()) {
+							$images[]=array(
+									'filename' => $image->filename,
+									'caption' => $image->caption,
+									'content' => $image->content,
+							);
+						}
+				}
+								
+				$model->roomImages = $images;
+				fb($model->roomImages);
+				
+				$related[] = 'roomImages';
 			  
 			}
-			
-			if($model->save())
+				fb($model);
+			if($re = $model->saveWithRelated($related)){
+				fb($re);
 				$this->redirect(array('view','id'=>$model->id));
+			}
+				fb($re);			
 		}
 
+
+		
 		$this->render('create',array(
 			'model'=>$model,
 		  'photosNumber' => isset($_POST['PhotoEvent']) ? count($_POST['PhotoEvent'])-1 : 0, //How many PhotoEvent the user added
@@ -178,45 +213,67 @@ public function actionLoaddistricts()
 	{
 		$model=$this->loadModel($id);
 		// Uncomment the following line if AJAX validation is needed
+			// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		$related = array();
+		$images = array();
 		if(isset($_POST['Rooms']))
 		{
 			$model->attributes=$_POST['Rooms'];
-
-		//	fb(isset($_POST['RoomCharges']));
+			
 			if (isset($_POST['RoomCharges'])) {
 			  $model->roomCharges = $_POST['RoomCharges'];
-			  //			  fb($model->roomCharges);
-			  $model->saveWithRelated('roomCharges');
+			  $related[] = 'roomCharges';
 			}
-	//		fb(isset($_POST['RoomOptions']));
+
 			if (isset($_POST['RoomOptions'])) {
 			  $model->roomOptions = $_POST['RoomOptions'];
-			  //			  fb($model->roomOptions);
-			  $model->saveWithRelated('roomOptions');
+			   $related[] = 'roomOptions';
 			}
-
-			
-			
-		
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			if($model->save())
+			if (isset($_POST['RoomImages'])) {
+				//$model->roomImages = $_POST['RoomImages'];
+				
+					foreach ( $_POST['RoomImages'] as $i => $roomImage ) {
+						$image = new RoomImages ();
+						$image->setAttributes ( $roomImage );
+						$rnd = $random = date ( time () );
+						$image->photo = CUploadedFile::getInstance ( $image, "[$i]photo" );
+						$fileName = "{$rnd}-{$image->photo->getName()}"; // random number + file name
+						$image->filename = $fileName;
+						$image->photo->saveAs ( Yii::app ()->basePath . '/../upload/room/' . $fileName ); // image will uplode to rootDirectory/banner/
+						Yii::import ( 'application.extensions.image.Image' );
+						$thumb = new Image ( Yii::app ()->basePath . '/../upload/room/' . $fileName );
+						$thumb->resize ( 200, 200 );
+						$thumb->save ( Yii::app ()->basePath . '/../upload/room/t_' . $fileName );
+						// @FIXME : 일단 올리고보자..?
+						if ($image->validate ()) {
+							$images[]=array(
+									'filename' => $image->filename,
+									'caption' => $image->caption,
+									'content' => $image->content,
+							);
+						}
+				}
+								
+				$model->roomImages = $images;
+				fb($model->roomImages);
+				
+				$related[] = 'roomImages';
+			  
+			}
+				fb($model);
+			if($re = $model->saveWithRelated($related)){
+				fb($re);
 				$this->redirect(array('view','id'=>$model->id));
+			}
+				fb($re);			
 		}
 
-		$this->render('update',array(
-		  'photosNumber' => isset($_POST['PhotoEvent']) ? count($_POST['PhotoEvent'])-1 : 0, //How many PhotoEvent the user added
+
+		
+		$this->render('create',array(
 			'model'=>$model,
+		  'photosNumber' => isset($_POST['PhotoEvent']) ? count($_POST['PhotoEvent'])-1 : 0, //How many PhotoEvent the user added
 		));
 	}
 

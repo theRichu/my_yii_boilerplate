@@ -138,39 +138,23 @@
 		</div><!-- row -->
 	
 	
-					<div class="row">
-					
+				<div class="row">
+		<?php 
+		$roomImages = $model->roomImages;
 		
-    <?php echo CHtml::button('add Photos', array('name'=>'addPhotos', 'id'=>'addPhotos')); ?>
- 
-    <?php foreach($model->roomImages as $i => $photo): ?>
-    <div id="photo-<?php echo $i ?>">
-        <div class="simple">   
-            <?php echo CHtml::activeLabelEx($photo,'filename'); ?>
-            <?php echo CHtml::activeFileField($photo, "filename[$i]"); ?>
-        </div>
-        <br />
-    </div>
-    <?php endforeach; ?>
- 
- 
-		<?php  /*
-		$images = $model->roomImages;
-
 		$this->widget('ext.widgets.tabularinput.XTabularInput',array(
-      'models'=>$images,
+      'models'=>$roomImages,
       'containerTagName'=>'div',
-      'header'=>'Image',
-
       'inputTagName'=>'div',
       'inputView'=>'extensions/_roomImage',
       'inputUrl'=>$this->createUrl('request/addRoomImage'),
-      'addLabel'=>Yii::t('ui','Add new Image'),
+      'addTemplate'=>'{link}',
+      'addLabel'=>Yii::t('ui','Add new Photo'),
       'addHtmlOptions'=>array('class'=>'blue pill full-width'),
-      'removeTemplate'=>'<div>{link}</div>',
+      'removeTemplate'=>'<td>{link}</td>',
       'removeLabel'=>Yii::t('ui','Delete'),
       'removeHtmlOptions'=>array('class'=>'red pill'),
-    ));*/
+    ));
     ?>
 		</div><!-- row -->
 

@@ -91,15 +91,16 @@ class PlaceImagesController extends Controller {
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
+
 	public function actionCreate() {
 		$models = array ();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		
+	
 		if (isset ( $_POST ['PlaceImages'] )) {
 			fb ( "GOT PLACE IMAGE POST" );
 			foreach ( $_POST ['PlaceImages'] as $i => $placeImage ) {
-				
+	
 				$model = new PlaceImages ();
 				$model->setAttributes ( $placeImage );
 				$model->place_id = $this->_place->id;
@@ -120,28 +121,27 @@ class PlaceImagesController extends Controller {
 				}
 			}
 		}
-		
+	
 		if (! empty ( $models )) {
-			
-			foreach ( $models as $model ) {
 				
-				if ($model->save ()) 
+			foreach ( $models as $model ) {
+	
+				if ($model->save ())
 			}
-			if (Yii::app ()->getRequest ()->getIsAjaxRequest ())
-				Yii::app ()->end ();
-			else
-				$this->redirect ( array (
-						'index' 
-				) );
+				if (Yii::app ()->getRequest ()->getIsAjaxRequest ())
+					Yii::app ()->end ();
+				else
+					$this->redirect ( array (
+							'index'
+					) );
 		} else {
 			$models [] = new PlaceImages ();
 		}
-		
+	
 		$this->render ( 'create', array (
-				'models' => $models 
+				'models' => $models
 		) );
 	}
-	
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

@@ -18,7 +18,7 @@ class m140411_165718_create_room_table extends CDbMigration
 	    'update_time' => 'datetime DEFAULT NULL',
 	    'update_user_id' => 'integer DEFAULT NULL',
 	  ), 'ENGINE=InnoDB');
-	  $this->addForeignKey("fk_rooms_places", "tbl_rooms", "place_id", "tbl_places", "id", "CASCADE", "RESTRICT");
+	  $this->addForeignKey("fk_rooms_places", "tbl_rooms", "place_id", "tbl_places", "id", "CASCADE", "CASCADE");
 	  
 	  $this->createTable('tbl_options', array(
 	    'id' => 'pk',
@@ -41,8 +41,8 @@ class m140411_165718_create_room_table extends CDbMigration
 	    'update_time' => 'datetime DEFAULT NULL',
 	    'update_user_id' => 'integer DEFAULT NULL',
 	  ), 'ENGINE=InnoDB');
-	  $this->addForeignKey("fk_room_options_options", "tbl_room_options", "option_id", "tbl_options", "id", "CASCADE", "RESTRICT");
-	  $this->addForeignKey("fk_room_options_rooms", "tbl_room_options", "room_id", "tbl_rooms", "id", "CASCADE", "RESTRICT");
+	  $this->addForeignKey("fk_room_options_options", "tbl_room_options", "option_id", "tbl_options", "id", "CASCADE", "CASCADE");
+	  $this->addForeignKey("fk_room_options_rooms", "tbl_room_options", "room_id", "tbl_rooms", "id", "CASCADE", "CASCADE");
 	  
 	  $this->createTable('tbl_room_charges', array(
 	    'id' => 'pk',
@@ -54,7 +54,7 @@ class m140411_165718_create_room_table extends CDbMigration
 	    'update_time' => 'datetime DEFAULT NULL',
 	    'update_user_id' => 'integer DEFAULT NULL',
 	  ), 'ENGINE=InnoDB');
-	  $this->addForeignKey("fk_room_charges_rooms", "tbl_room_charges", "room_id", "tbl_rooms", "id", "CASCADE", "RESTRICT");
+	  $this->addForeignKey("fk_room_charges_rooms", "tbl_room_charges", "room_id", "tbl_rooms", "id", "CASCADE", "CASCADE");
 	
 	  $this->createTable('tbl_room_images', array(
 	    'id' => 'pk',
@@ -67,7 +67,7 @@ class m140411_165718_create_room_table extends CDbMigration
 	    'update_time' => 'datetime DEFAULT NULL',
 	    'update_user_id' => 'integer DEFAULT NULL',
 	  ), 'ENGINE=InnoDB');
-	  $this->addForeignKey("fk_rooms_room_images", "tbl_room_images", "room_id", "tbl_rooms", "id", "NO ACTION", "RESTRICT");
+	  $this->addForeignKey("fk_rooms_room_images", "tbl_room_images", "room_id", "tbl_rooms", "id", "CASCADE", "CASCADE");
 	  
 	  $this->createTable('tbl_room_comments', array(
 	    'id' => 'pk',
@@ -79,7 +79,7 @@ class m140411_165718_create_room_table extends CDbMigration
 	    'update_time' => 'datetime DEFAULT NULL',
 	    'update_user_id' => 'integer DEFAULT NULL',
 	  ), 'ENGINE=InnoDB');
-	  $this->addForeignKey("fk_rooms_room_comments", "tbl_room_comments", "room_id", "tbl_rooms", "id", "NO ACTION", "RESTRICT");
+	  $this->addForeignKey("fk_rooms_room_comments", "tbl_room_comments", "room_id", "tbl_rooms", "id", "CASCADE", "CASCADE");
 	  
 	}
 

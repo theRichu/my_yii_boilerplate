@@ -1,12 +1,11 @@
 
 <div>
 		<div class="row">
-        <?php echo CHtml::activeLabelEx($model,"[$index]filename"); ?>
-        <?php echo CHtml::activeFileField($model, "[$index]filename"); ?>  
-        <?php echo CHtml::error($model,"[$index]filename"); ?>
+        <?php echo CHtml::activeLabelEx($model,"[$index]photo"); ?>
+        <?php echo CHtml::activeFileField($model, "[$index]photo"); ?>  
+        <?php echo CHtml::error($model,"[$index]photo"); ?>
     </div>
 
-    <?php fb("[$index]filename"); ?>
     <?php  if($model->isNewRecord!='1'){ ?>
     <div class="row">
          <?php echo CHtml::image(Yii::app()->request->baseUrl.'/upload/room/'.$model->filename,"[$index]filename",array("width"=>200)); ?>
