@@ -74,7 +74,7 @@ if (count($images)) {
 )); ?>
 	<b>Options:</b>
 <?php // echo CHtml::encode(count($data->roomOptions)); ?>
-<?php fb($data->roomOptions); ?>
+
 <br />
 
 <?php   $roomOptionsDataProvider=new CActiveDataProvider('RoomOptions',array(

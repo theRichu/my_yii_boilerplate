@@ -73,36 +73,70 @@ if (count($images)) {
 <?php $this->widget('yiiwheels.widgets.gallery.WhGallery', array('items' => $images));?>
 
 <br />
-<?php echo TbHtml::linkButton('지금 예약하기', 
-  array(
-    'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-    'url' => array('reservations/create', 'id'=>$model->id, 'rid'=>$model->id),
-)
-); ?>
+
 	
 
-<br />
-<h1>Room Charges</h1>
-<?php
 
-$this->widget('zii.widgets.CListView', 
-  array(
-    'dataProvider' => $roomChargesDataProvider,
-        'itemView' => '/roomCharges/_view'
-  ));
-?>
 
 <br />
-<h1>Room Options</h1>
-<?php
+<?php 
+$charges = array();
+foreach ($model->roomCharges as $record) {
+  $charges[] = array(
+    $record->id => $record->description ." : " .$record->price ,
+  );
+}
 
-$this->widget('zii.widgets.CListView', 
-  array(
-    'dataProvider' => $roomOptionsDataProvider,
-        'itemView' => '/roomOptions/_view'
-  ));
+echo TbHtml::dropDownList('dropDown', '', $charges);
 ?>
 
+<?php
+$options = array();
+foreach ($model->roomOptions as $record) {
+  $options[] = array(
+    $record->option_id => $record->option->name,
+  );
+}
+
+echo TbHtml::dropDownList('dropDown', '', $options);
+?>
+<?php /*  echo TbHtml::linkButton('지금 예약하기', 
+  array(
+    'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+    'size' => TbHtml::BUTTON_SIZE_LARGE,
+    'url' => array('reservations/create', 'id'=>$model->id, 'rid'=>$model->id),
+)
+); */?>
+
+<?php $this->widget('bootstrap.widgets.TbModal', array(
+    'id' => 'myModal',
+    'header' => 'Modal Heading',
+    'content' => '<p>One fine body...</p>',
+    'footer' => array(
+        TbHtml::button('Save Changes', array('data-dismiss' => 'modal', 'color' => TbHtml::BUTTON_COLOR_PRIMARY)),
+        TbHtml::button('Close', array('data-dismiss' => 'modal')),
+     ),
+)); ?>
+ 
+<?php 
+echo TbHtml::button('지금 예약하기', array(
+    'color' => TbHtml::BUTTON_COLOR_PRIMARY,
+    'size' => TbHtml::BUTTON_SIZE_LARGE,
+    'data-toggle' => 'modal',
+    'data-target' => '#myModal',
+)); 
+?>
+
+<br/>
+	
+	<?php echo TbHtml::tabbableTabs(array(
+    array('label' => '예약현황', 'active' => true,
+ 'content' => $this->renderPartial("extensions/_calender", array('model' => $model), $this)),
+    array('label' => '가격정보', 
+'content' => $this->renderPartial("extensions/_charge", array('roomChargesDataProvider' => $roomChargesDataProvider), $this)),
+    array('label' => '옵션정보', 
+'content' => $this->renderPartial("extensions/_option", array('roomOptionsDataProvider' => $roomOptionsDataProvider), $this)),
+), array('placement' => TbHtml::TABS_PLACEMENT_LEFT)); ?>
 
 <?php
 

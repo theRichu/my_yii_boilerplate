@@ -71,9 +71,9 @@ class RoomImagesController extends Controller
 	if (isset($_POST['RoomImages'])) {
 
 		  
-		  $rnd = $random = date(time());
+		 
 			$model->setAttributes($_POST['RoomImages']);
-			
+			$rnd = $random = date(time());
 			$uploadedFile=CUploadedFile::getInstance($model,'filename');
 
 			$fileName = "{$rnd}-{$uploadedFile}";  // random number + file name

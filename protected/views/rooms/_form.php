@@ -13,6 +13,7 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+  'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -136,6 +137,42 @@
     ?>
 		</div><!-- row -->
 	
+	
+					<div class="row">
+					
+		
+    <?php echo CHtml::button('add Photos', array('name'=>'addPhotos', 'id'=>'addPhotos')); ?>
+ 
+    <?php foreach($model->roomImages as $i => $photo): ?>
+    <div id="photo-<?php echo $i ?>">
+        <div class="simple">   
+            <?php echo CHtml::activeLabelEx($photo,'filename'); ?>
+            <?php echo CHtml::activeFileField($photo, "filename[$i]"); ?>
+        </div>
+        <br />
+    </div>
+    <?php endforeach; ?>
+ 
+ 
+		<?php  /*
+		$images = $model->roomImages;
+
+		$this->widget('ext.widgets.tabularinput.XTabularInput',array(
+      'models'=>$images,
+      'containerTagName'=>'div',
+      'header'=>'Image',
+
+      'inputTagName'=>'div',
+      'inputView'=>'extensions/_roomImage',
+      'inputUrl'=>$this->createUrl('request/addRoomImage'),
+      'addLabel'=>Yii::t('ui','Add new Image'),
+      'addHtmlOptions'=>array('class'=>'blue pill full-width'),
+      'removeTemplate'=>'<div>{link}</div>',
+      'removeLabel'=>Yii::t('ui','Delete'),
+      'removeHtmlOptions'=>array('class'=>'red pill'),
+    ));*/
+    ?>
+		</div><!-- row -->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
@@ -144,3 +181,39 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+    
+<script type="text/javascript">
+// I need to know how many photos I've already added when the validate return FALSE
+var photosAdded = 0<?php //echo $photosNumber; ?>;
+ 
+// Add the event to the period's add button
+$('#addPhotos').click(function () {
+    // I'm going to clone the first div containing the Model input couse I don't want to create a new div and add every single structure
+    var divCloned = $('#photo-0').clone();      
+    // I'm attaching the div to the last input created
+    $('#photo-'+(photosAdded++)).after(divCloned);
+    // Changin the div id
+    divCloned.attr('id', 'photo-'+photosAdded);
+    // Initializing the div contents
+    initNewInputs(divCloned.children('.simple'), photosAdded);
+});
+ 
+function initNewInputs( divs, idNumber ) {
+    // Taking the div labels and resetting them. If you send wrong information,
+    // Yii will show the errors. If you than clone that div, the css will be cloned too, so we have to reset it
+    var labels = divs.children('label').get();
+    for ( var i in labels )
+        labels[i].setAttribute('class', 'required');      
+ 
+    // Taking all inputs and resetting them.
+    // We have to set value to null, set the class attribute to null and change their id and name with the right id.
+    var inputs = divs.children('input').get();      
+ 
+    for ( var i in inputs  ) {
+        inputs[i].value = "";
+        inputs[i].setAttribute('class', '');
+        inputs[i].id = inputs[i].id.replace(/\d+/, idNumber);
+        inputs[i].name = inputs[i].name.replace(/\d+/, idNumber);
+    }
+}
+</script>

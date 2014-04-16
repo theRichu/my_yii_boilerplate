@@ -27,6 +27,9 @@
  */
 class Rooms extends StoryBoxActiveRecord
 {
+  
+  
+  
 	/**
 	 * @return string the associated database table name
 	 */

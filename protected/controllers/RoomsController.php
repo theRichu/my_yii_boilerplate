@@ -87,40 +87,39 @@ public function actionLoaddistricts()
 	 */
 	public function actionView($id)
 	{
-/* 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		)); */
 
+	  $roomNoticesDataProvider=new CActiveDataProvider('Notices',array(
+	    'criteria'=>array(
+	      'condition'=>'room_id=:roomId',
+	      'params'=>array(':roomId'=>$this->loadModel($id)->id),
+	    ),
+	    'pagination'=>false,
+	  ));
 	  $roomOptionsDataProvider=new CActiveDataProvider('RoomOptions',array(
 	    'criteria'=>array(
 	      'condition'=>'room_id=:roomId',
 	      'params'=>array(':roomId'=>$this->loadModel($id)->id),
 	    ),
-	    'pagination'=>array(
-	      'pageSize'=>10,
-	    ),
+	    'pagination'=>false,
 	  ));
 	  $roomChargesDataProvider=new CActiveDataProvider('RoomCharges',array(
 	    'criteria'=>array(
 	      'condition'=>'room_id=:roomId',
 	      'params'=>array(':roomId'=>$this->loadModel($id)->id),
 	    ),
-	    'pagination'=>array(
-	      'pageSize'=>10,
-	    ),
+	    'pagination'=>false,
 	  ));
 	  $roomImagesDataProvider=new CActiveDataProvider('RoomImages',array(
 	    'criteria'=>array(
 	      'condition'=>'room_id=:roomId',
 	      'params'=>array(':roomId'=>$this->loadModel($id)->id),
 	    ),
-	    'pagination'=>array(
-	      'pageSize'=>10,
-	    ),
+	    'pagination'=>false,
 	  ));
 	  
 	  $this->render('view',array(
 	    'model'=>$this->loadModel($id),
+	    'roomNoticesDataProvider'=>$roomNoticesDataProvider,
 	    'roomOptionsDataProvider'=>$roomOptionsDataProvider,
 	    'roomChargesDataProvider'=>$roomChargesDataProvider,
 	    'roomImagesDataProvider'=>$roomImagesDataProvider,
@@ -141,17 +140,23 @@ public function actionLoaddistricts()
 		if(isset($_POST['Rooms']))
 		{
 			$model->attributes=$_POST['Rooms'];
-			fb(isset($_POST['RoomCharges']));
+
 			if (isset($_POST['RoomCharges'])) {
 			  $model->roomCharges = $_POST['RoomCharges'];
 			  //			  fb($model->roomCharges);
 			  $model->saveWithRelated('roomCharges');
 			}
-			fb(isset($_POST['RoomOptions']));
+
 			if (isset($_POST['RoomOptions'])) {
 			  $model->roomOptions = $_POST['RoomOptions'];
 			  //			  fb($model->roomOptions);
 			  $model->saveWithRelated('roomOptions');
+			}
+			if (isset($_POST['RoomImages'])) {
+			  $model->roomImages = $_POST['RoomImages'];
+			  	
+			  $model->saveWithRelated('roomImages');
+			  
 			}
 			
 			if($model->save())
@@ -160,6 +165,7 @@ public function actionLoaddistricts()
 
 		$this->render('create',array(
 			'model'=>$model,
+		  'photosNumber' => isset($_POST['PhotoEvent']) ? count($_POST['PhotoEvent'])-1 : 0, //How many PhotoEvent the user added
 		));
 	}
 
@@ -178,24 +184,38 @@ public function actionLoaddistricts()
 		{
 			$model->attributes=$_POST['Rooms'];
 
-			fb(isset($_POST['RoomCharges']));
+		//	fb(isset($_POST['RoomCharges']));
 			if (isset($_POST['RoomCharges'])) {
 			  $model->roomCharges = $_POST['RoomCharges'];
 			  //			  fb($model->roomCharges);
 			  $model->saveWithRelated('roomCharges');
 			}
-			fb(isset($_POST['RoomOptions']));
+	//		fb(isset($_POST['RoomOptions']));
 			if (isset($_POST['RoomOptions'])) {
 			  $model->roomOptions = $_POST['RoomOptions'];
 			  //			  fb($model->roomOptions);
 			  $model->saveWithRelated('roomOptions');
 			}
-				
+
+			
+			
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(
+		  'photosNumber' => isset($_POST['PhotoEvent']) ? count($_POST['PhotoEvent'])-1 : 0, //How many PhotoEvent the user added
 			'model'=>$model,
 		));
 	}
@@ -250,10 +270,10 @@ public function actionLoaddistricts()
 	  //$criteria->with = array( 'roomCharges' );
    
 	  if(isset($state) && $state!=['']){
-	    $criteria->addInCondition('places.state', $state, false);
+	    $criteria->compare('places.state', $state, false);
 	  }
 	  if(isset($city) && $city!=['']){
-	    $criteria->addInCondition('places.city', $city, false);
+	    $criteria->compare('places.city', $city, false);
 	  }
 /* 
 	  if(!empty($this->district))
@@ -267,10 +287,7 @@ public function actionLoaddistricts()
 	   
 		$dataProvider=new CActiveDataProvider('Rooms',
 		  array('criteria'=>$criteria)
-
-		);
-
-	  
+		);  
 	
 		$this->render('index',array(
 		  'model'=>$model,

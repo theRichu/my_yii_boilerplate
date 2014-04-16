@@ -12,7 +12,7 @@ $this->menu=array(
 ?>
 
 <h1>Notices</h1>
-<?php $this->widget('efullcalendar.EFullCalendar'); ?>
+
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',

@@ -22,7 +22,7 @@ class RequestController extends Controller
 		return array(
 			array('allow',
 				'actions'=>array(
-					'addRoomOption', 'addRoomCharge'
+					'addRoomOption', 'addRoomCharge', 'addRoomImage'
 				),
 				'users'=>array('*'),
 			),
@@ -47,6 +47,11 @@ class RequestController extends Controller
 		    'class'=>'ext.actions.XTabularInputAction',
 		    'modelName'=>'RoomCharges',
 		    'viewName'=>'/rooms/extensions/_roomCharge',
+		  ),
+		  'addRoomImage'=>array(
+		    'class'=>'ext.actions.XTabularInputAction',
+		    'modelName'=>'RoomImages',
+		    'viewName'=>'/rooms/extensions/_roomImage',
 		  ),
 		);
 	}

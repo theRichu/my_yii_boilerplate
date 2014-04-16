@@ -25,8 +25,17 @@ $this->menu=array(
 		'from',
 		'to',
 		'specialprice',
-		'payment',
-		'status',
+
+    array(
+      'name'=>'payment',
+      'value'=>CHtml::encode($model->getPaymentText())
+    ),
+    array(
+      'name'=>'status',
+      'value'=>CHtml::encode($model->getStatusText())
+    ),
+
+
 		'contactnumber',
 		'create_time',
 		'create_user_id',

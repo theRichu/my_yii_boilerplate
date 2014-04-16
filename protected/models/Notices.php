@@ -35,24 +35,70 @@ class Notices extends StoryBoxActiveRecord
   const PAYMENT_TRANSFER=2;
   
   
-  public function getStatusOptions()
+  public static function getStatusOptions()
   {
     return array(
-      self::STATUS_OPEN=>'예약 가능',
-      self::STATUS_PROCESS=>'예약 진행중',
-      self::STATUS_CANCELED=>'예약 취소',
-      self::STATUS_COMPLETE=>'예약 완료',
+      self::STATUS_OPEN => '예약 가능',
+      self::STATUS_PROCESS => '예약 진행중',
+      self::STATUS_CANCELED => '예약 취소',
+      self::STATUS_COMPLETE => '예약 완료',
       );
   }
-
-  public function getPaymentOptions()
+  
+  
+  public static function getStatusColor()
   {
     return array(
-      self::PAYMENT_ONLINE=>'무통장 입금',
-      self::PAYMENT_ONLINE=>'현장납부',
-      self::PAYMENT_TRANSFER=>'온라인 송금',
+      self::STATUS_OPEN => 'blue',
+      self::STATUS_PROCESS => 'orange',
+      self::STATUS_CANCELED => 'red',
+      self::STATUS_COMPLETE => 'green',
     );
   }
+  public static function getAllowedStatusRange()
+  {
+    return array(
+      self::STATUS_OPEN,
+      self::STATUS_PROCESS,
+      self::STATUS_CANCELED,
+      self::STATUS_COMPLETE,
+      );
+ }
+
+  public function getStatusText()
+  {
+    $statusOptions=$this->getStatusOptions();
+
+    return isset($statusOptions[$this->status])?$statusOptions[$this->status]:"unknown({$this->status})";
+  }
+
+
+  public static function getPaymentOptions()
+  {
+    return array(
+      self::PAYMENT_ONLINE => '무통장 입금',
+      self::PAYMENT_OFFLINE => '현장납부',
+      self::PAYMENT_TRANSFER => '온라인 송금',
+    );
+  }
+  
+  public function getPaymentText()
+  {
+    $paymentOptions=$this->getPaymentOptions();
+    
+    return isset($paymentOptions[$this->payment])?$paymentOptions[$this->payment]:"unknown({$this->payment})";
+  }
+
+  public static function getAllowedPaymentRange()
+  {
+    return array(
+      self::PAYMENT_ONLINE,
+      self::PAYMENT_OFFLINE,
+      self::PAYMENT_TRANSFER,
+    );
+  }
+  
+  
   
 	/**
 	 * @return string the associated database table name
