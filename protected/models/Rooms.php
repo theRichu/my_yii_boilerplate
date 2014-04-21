@@ -72,6 +72,9 @@ class Rooms extends StoryBoxActiveRecord
 			'roomCharges' => array(self::HAS_MANY, 'RoomCharges', 'room_id'),
 			'roomComments' => array(self::HAS_MANY, 'RoomComments', 'room_id'),
 			'roomImages' => array(self::HAS_MANY, 'RoomImages', 'room_id'),
+					
+			//'roomImages' => array(self::MANY_MANY, 'Images', '{{rooms_has_images}}(room_id, image_id)'),
+				
 			'roomOptions' => array(self::HAS_MANY, 'RoomOptions', 'room_id'),
 			'places' => array(self::BELONGS_TO, 'Places', 'place_id'),
 		  'creater' => array(self::BELONGS_TO, 'User', 'create_user_id'),

@@ -5978,3 +5978,31 @@ Stack trace:
 REQUEST_URI=/storybox/upload/place/1397565122-iron_man_shield_interface_star_2560x1440_wallpaperno.com.jpg
 HTTP_REFERER=http://dev.modiez.kr/storybox/places/1
 ---
+2014/04/18 22:38:19 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'storybox.tbl_users_has_places' doesn't exist. The SQL statement executed was: ALTER TABLE `tbl_users_has_places` ADD CONSTRAINT `fk_places_users` FOREIGN KEY (`place_id`) REFERENCES `tbl_places` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT.
+2014/04/18 22:39:46 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'tbl_places' already exists. The SQL statement executed was: CREATE TABLE `tbl_places` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`name` varchar(255) NOT NULL,
+	`address` varchar(255) NOT NULL,
+	`state` varchar(45) NOT NULL,
+	`city` varchar(45) NOT NULL,
+	`district` varchar(45) NOT NULL,
+	`description` text DEFAULT NULL,
+	`map_lat` FLOAT(20, 15) DEFAULT NULL,
+	`map_lag` FLOAT(20, 15) DEFAULT NULL,
+	`create_time` datetime DEFAULT NULL,
+	`create_user_id` int(11) NOT NULL,
+	`update_time` datetime DEFAULT NULL,
+	`update_user_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB.
+2014/04/18 22:41:07 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY000]: General error: 1005 Can't create table 'storybox.#sql-376_f94' (errno: 150). The SQL statement executed was: ALTER TABLE `tbl_places_has_users` ADD CONSTRAINT `fk_users_places` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT.
+2014/04/18 22:44:27 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'storybox.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2014/04/18 22:44:33 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'storybox.tbl_images_has_places' doesn't exist. The SQL statement executed was: ALTER TABLE `tbl_images_has_places` ADD CONSTRAINT `fk_places_images` FOREIGN KEY (`place_id`) REFERENCES `tbl_places` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT.
+2014/04/18 22:46:22 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'storybox.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2014/04/18 22:46:26 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'storybox.tbl_place_comments' doesn't exist. The SQL statement executed was: ALTER TABLE `tbl_place_comments` ADD CONSTRAINT `fk_places_place_comments` FOREIGN KEY (`place_id`) REFERENCES `tbl_places` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT.
+2014/04/18 22:47:57 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'storybox.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2014/04/18 22:48:01 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'storybox.tbl_room_has_places' doesn't exist. The SQL statement executed was: ALTER TABLE `tbl_room_has_places` ADD CONSTRAINT `fk_rooms_images` FOREIGN KEY (`room_id`) REFERENCES `tbl_rooms` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT.
+2014/04/18 22:48:55 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'storybox.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2014/04/18 22:48:59 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'storybox.tbl_room_has_images' doesn't exist. The SQL statement executed was: ALTER TABLE `tbl_room_has_images` ADD CONSTRAINT `fk_rooms_images` FOREIGN KEY (`room_id`) REFERENCES `tbl_rooms` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT.
+2014/04/18 22:49:47 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'storybox.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2014/04/21 12:49:35 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'storybox.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2014/04/21 12:55:47 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'storybox.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.

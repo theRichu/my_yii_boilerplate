@@ -14,7 +14,8 @@ $form = $this->beginWidget ( 'CActiveForm', array (
 		// controller action is handling ajax validation correctly.
 		// There is a call to performAjaxValidation() commented in generated controller code.
 		// See class documentation of CActiveForm for details on this.
-		'enableAjaxValidation' => false 
+		'enableAjaxValidation' => false,
+		'htmlOptions' => array('enctype' => 'multipart/form-data'),
 ) );
 ?>
 
@@ -47,19 +48,37 @@ $form = $this->beginWidget ( 'CActiveForm', array (
 		<?php echo $form->error($model,'address'); ?>
 	</div>
 
+		<div class="row">
+		<?php 
+		$placeImages = $model->placeImages;
+		
+		$this->widget('ext.widgets.tabularinput.XTabularInput',array(
+      'models'=>$placeImages,
+      'containerTagName'=>'div',
+      'inputTagName'=>'div',
+      'inputView'=>'extensions/_placeImage',
+      'inputUrl'=>$this->createUrl('request/addPlaceImage'),
+      'addTemplate'=>'{link}',
+      'addLabel'=>Yii::t('ui','Add new Photo'),
+      'addHtmlOptions'=>array('class'=>'blue pill full-width'),
+      'removeTemplate'=>'<td>{link}</td>',
+      'removeLabel'=>Yii::t('ui','Delete'),
+      'removeHtmlOptions'=>array('class'=>'red pill'),
+    ));
+    ?>
+		</div><!-- row -->
+	
   <div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
 		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
-
-
+	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
-
 
 
 

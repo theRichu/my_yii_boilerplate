@@ -93,11 +93,13 @@ class PlaceImagesController extends Controller {
 	 */
 
 	public function actionCreate() {
+		
 		$models = array ();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 	
 		if (isset ( $_POST ['PlaceImages'] )) {
+			
 			fb ( "GOT PLACE IMAGE POST" );
 			foreach ( $_POST ['PlaceImages'] as $i => $placeImage ) {
 	
@@ -126,17 +128,24 @@ class PlaceImagesController extends Controller {
 				
 			foreach ( $models as $model ) {
 	
-				if ($model->save ())
+				$model->save();
+			
 			}
-				if (Yii::app ()->getRequest ()->getIsAjaxRequest ())
-					Yii::app ()->end ();
-				else
-					$this->redirect ( array (
-							'index'
-					) );
+
+			if (Yii::app ()->getRequest ()->getIsAjaxRequest ())
+				Yii::app ()->end ();
+			else
+				$this->redirect ( array (
+						'index'
+				));
 		} else {
 			$models [] = new PlaceImages ();
 		}
+		
+		
+
+		
+		
 	
 		$this->render ( 'create', array (
 				'models' => $models

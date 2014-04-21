@@ -99,25 +99,7 @@ echo $form->textField(
         'prepend' => '<i class="icon-search"></i>'
     )
 );
-
-$max = (isset($_GET['max']))?$_GET['max']:80000;
-$min = (isset($_GET['min']))?$_GET['min']:20000;
-
-$this->widget(
-  'yiiwheels.widgets.rangeslider.WhRangeSlider',
-  array(
-    'id'       => 'price',
-    'name'     => 'price',
-    'delayOut' => 4000,
-    'type'     => 'editRange',
-    'minValue' => $min,
-    'maxValue' => $max,
-    'step' => 10000,
-    
-  )
-  );
 ?>
-
 <?php 
 $option_model =  Options::model()->findAll();
 $options = array();
@@ -125,30 +107,9 @@ foreach ($option_model as $record) {
    $options[$record->id] = $record->name;
 }
 
-echo  TbHtml::CheckBoxList('option', 'option', $options); ?>
-
-<?php 
-/*
-    $this->widget('zii.widgets.jui.CJuiSlider', array(
-      'id'=>'amtSlider',
-      'options'=>array(
-        'max'=>$model->getCurrentMaxPrice(),
-        'min'=>$model->getCurrentMinPrice(),
-        'step'=>1000,
-        'range'=>true,
-        'values'=>array($min,$max),
-        'slide'=>'js:function(event, ui) { 
-            $("#min").val(ui.values[0]);
-            $("#max").val(ui.values[1]);
-        }',
-      ),
-  ));
-    
-
-echo CHtml::textField('min',  $min , array('id'=>'min')); 
-echo CHtml::textField('max', $max , array('id'=>'max')); 
-*/
+echo  TbHtml::CheckBoxList('option', 'option', $options); 
 ?>
+
 <?php echo TbHtml::formActions(array(
     TbHtml::submitButton('검색', array('color' => TbHtml::BUTTON_COLOR_PRIMARY)),
    // TbHtml::button('Cancel'),

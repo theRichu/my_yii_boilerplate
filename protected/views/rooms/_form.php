@@ -138,7 +138,7 @@
 		</div><!-- row -->
 	
 	
-				<div class="row">
+		<div class="row">
 		<?php 
 		$roomImages = $model->roomImages;
 		

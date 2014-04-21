@@ -51,13 +51,10 @@ class PlacesController extends Controller
 	 */
 	public function actionView($id)
 	{
-/* 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		)); */
 	  $roomsDataProvider=new CActiveDataProvider('Rooms',array(
 	    'criteria'=>array(
 	      'condition'=>'place_id=:place_id',
-	      'params'=>array(':place_id'=>$this->loadRoom($id)->id),
+	      'params'=>array(':place_id'=>$id),
 	    ),
 	    'sort'=>array(
 	      'defaultOrder'=>'create_time DESC',
@@ -79,16 +76,43 @@ class PlacesController extends Controller
 	public function actionCreate()
 	{
 		$model=new Places;
-
+		$related = array();
+		$tempImages = array();
+		$tempFilenames = array();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Places']))
 		{
 			$model->attributes=$_POST['Places'];
-
-			if($model->save())
+			
+			if (isset($_POST['PlaceImages'])) {
+				$tempPost = $_POST['PlaceImages'];
+				$image = new PlaceImages();
+				foreach ( $_POST['PlaceImages'] as $i => $placeImage ) {
+					$image -> setAttributes($placeImage);
+					$rnd = $random = date ( time () );
+					$image->photo = CUploadedFile::getInstance ( $image, "[$i]photo" );
+						
+					$tempImages["{$i}"] = CUploadedFile::getInstance ( $image, "[$i]photo" );
+					$tempFileNames["{$i}"] = "{$rnd}-{$tempImages[$i]->getName()}"; // random number + file name
+					$tempPost[$i]['filename'] = $tempFileNames[$i];
+					unset($tempPost[$i]['photo']);
+				}
+				$model->placeImages = $tempPost;
+				$related[] = 'placeImages';
+			}
+			
+			if($re = $model->saveWithRelated($related)){
+				foreach($tempImages as $i => $tempImage){
+					$tempImages["{$i}"]->saveAs ( Yii::app ()->basePath . '/../upload/place/' . $tempFileNames["{$i}"] ); // image will uplode to rootDirectory/banner/
+					Yii::import ( 'application.extensions.image.Image' );
+					$thumb = new Image ( Yii::app ()->basePath . '/../upload/place/' . $tempFileNames["{$i}"] );
+					$thumb->resize ( 200, 200 );
+					$thumb->save ( Yii::app ()->basePath . '/../upload/place/t_' . $tempFileNames["{$i}"] );
+				}
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(
@@ -104,6 +128,9 @@ class PlacesController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$tempImages = array();
+		$tempFilenames = array();
+		$related = array();
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -111,10 +138,46 @@ class PlacesController extends Controller
 		if(isset($_POST['Places']))
 		{
 			$model->attributes=$_POST['Places'];
-
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			if (isset($_POST['PlaceImages'])) {
+				$tempPost = $_POST['PlaceImages'];
+				$image = new PlaceImages();
+				foreach ( $_POST['PlaceImages'] as $i => $placeImage ) {
+					$image -> setAttributes($placeImage);		
+					fb($image->filename);
+					if(!($image->filename))
+					{
+						$rnd = $random = date ( time () );
+						
+						$tempImages["{$i}"] = CUploadedFile::getInstance ( $image, "[$i]photo" );
+						$tempFileNames["{$i}"] = "{$rnd}-{$tempImages[$i]->getName()}"; // random number + file name
+						$tempPost[$i]['filename'] = $tempFileNames[$i];
+						unset($tempPost[$i]['photo']);
+					}
+				}
+				fb($tempPost);
+				$model->placeImages = $tempPost;				
+			}else{
+				$model->placeImages = NULL;
+			}
+			fb($model -> id);
+			$related[] = 'placeImages';
+			
+			fb($related);
+				
+			if($re = $model->saveWithRelated($related)){
+				fb($re);
+				foreach($tempImages as $i => $tempImage){
+					$tempImages["{$i}"]->saveAs ( Yii::app ()->basePath . '/../upload/place/' . $tempFileNames["{$i}"] ); // image will uplode to rootDirectory/banner/
+					Yii::import ( 'application.extensions.image.Image' );
+					$thumb = new Image ( Yii::app ()->basePath . '/../upload/place/' . $tempFileNames["{$i}"] );
+					$thumb->resize ( 200, 200 );
+					$thumb->save ( Yii::app ()->basePath . '/../upload/place/t_' . $tempFileNames["{$i}"] );
+				}
+				$this->redirect(array('view','id'=>$id));
+			}
 		}
+				
+
 
 		$this->render('update',array(
 			'model'=>$model,
@@ -140,11 +203,6 @@ class PlacesController extends Controller
 	 */
 	public function actionIndex()
 	{
-/* 		$dataProvider=new CActiveDataProvider('Places');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-		 */
 	  $model=new Places('search');
 	  $model->unsetAttributes();  // clear any default values
 	  if(isset($_GET['Places']))
@@ -218,7 +276,6 @@ class PlacesController extends Controller
 	  if($this->_room===null)
 	  {
 	    $this->_room=Rooms::model()->findByPk($placeId);
-	
 	    if($this->_room===null)
 	    {
 	      throw new CHttpException(404,'The requested room does not exist.');

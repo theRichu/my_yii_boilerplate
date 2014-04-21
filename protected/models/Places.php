@@ -64,10 +64,12 @@ class Places extends StoryBoxActiveRecord
 		return array(
 			'placeComments' => array(self::HAS_MANY, 'PlaceComments', 'place_id'),
 			'placeImages' => array(self::HAS_MANY, 'PlaceImages', 'place_id'),
+					
+			//'placeImages' => array(self::MANY_MANY, 'Images', 'tbl_places_has_images(place_id, image_id)'),
 			'rooms' => array(self::HAS_MANY, 'Rooms', 'place_id'),
 		  'creater' => array(self::BELONGS_TO, 'User', 'create_user_id'),
 		  'updater' => array(self::BELONGS_TO, 'User', 'update_user_id'),
-			'tblUsers' => array(self::MANY_MANY, 'Users', '{{users_has_places}}(place_id, user_id)'),
+			'administrators' => array(self::MANY_MANY, 'Users', '{{users_has_places}}(place_id, user_id)'),
 		);
 	}
 
@@ -113,7 +115,6 @@ class Places extends StoryBoxActiveRecord
 
 		$criteria=new CDbCriteria;
 		
-		$criteria->with = array( 'Rooms' );
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);

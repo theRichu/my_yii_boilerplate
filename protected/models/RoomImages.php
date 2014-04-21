@@ -60,7 +60,7 @@ class RoomImages extends StoryBoxActiveRecord {
 						'integerOnly' => true 
 				),
 				array (
-						'caption, filename',
+						'title, filename',
 						'length',
 						'max' => 255 
 				),
@@ -71,7 +71,7 @@ class RoomImages extends StoryBoxActiveRecord {
 				// The following rule is used by search().
 				// @todo Please remove those attributes that should not be searched.
 				array (
-						'id, caption, content, filename, room_id, create_time, create_user_id, update_time, update_user_id',
+						'id, title, description, filename, room_id, create_time, create_user_id, update_time, update_user_id',
 						'safe',
 						'on' => 'search' 
 				) 

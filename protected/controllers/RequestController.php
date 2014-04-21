@@ -22,7 +22,7 @@ class RequestController extends Controller
 		return array(
 			array('allow',
 				'actions'=>array(
-					'addRoomOption', 'addRoomCharge', 'addRoomImage'
+					'addRoomOption', 'addRoomCharge', 'addRoomImage', 'addPlaceImage', 'addPlaceService'
 				),
 				'users'=>array('*'),
 			),
@@ -38,6 +38,11 @@ class RequestController extends Controller
 	public function actions()
 	{
 		return array(
+			'addPlaceImage'=>array(
+					'class'=>'ext.actions.XTabularInputAction',
+					'modelName'=>'PlaceImages',
+					'viewName'=>'/places/extensions/_placeImage',
+			),	
 			'addRoomOption'=>array(
 				'class'=>'ext.actions.XTabularInputAction',
 				'modelName'=>'RoomOptions',

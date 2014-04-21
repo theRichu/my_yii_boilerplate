@@ -43,6 +43,7 @@ class PlaceImages extends StoryBoxActiveRecord {
 						'photo',
 						'file',
 						'types' => 'jpg, gif, png',
+						'allowEmpty'=>true,
 						'safe' => true 
 				),
 				array (
@@ -56,13 +57,13 @@ class PlaceImages extends StoryBoxActiveRecord {
 						'max' => 255 
 				),
 				array (
-						'caption, create_time, update_time, photo',
+						'title, photo, description',
 						'safe' 
 				),
 				// The following rule is used by search().
 				// @todo Please remove those attributes that should not be searched.
 				array (
-						'id, title, caption, create_time, create_user_id, update_time, update_user_id',
+						'id, title, description, create_time, create_user_id, update_time, update_user_id',
 						'safe',
 						'on' => 'search' 
 				) 

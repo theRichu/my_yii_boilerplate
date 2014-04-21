@@ -56,7 +56,7 @@ foreach ($model->roomImages as $record) {
     
         'url' => Yii::app()->request->baseUrl . '/upload/room/' . $record->filename,
         'src' => Yii::app()->request->baseUrl . '/upload/room/t_' . $record->filename,
-          'options' => array('title' => $record->content)
+          'options' => array('title' => $record->title)
   );
 }
 if (count($images)) {

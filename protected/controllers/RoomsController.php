@@ -91,32 +91,50 @@ public function actionLoaddistricts()
 	  $roomNoticesDataProvider=new CActiveDataProvider('Notices',array(
 	    'criteria'=>array(
 	      'condition'=>'room_id=:roomId',
-	      'params'=>array(':roomId'=>$this->loadModel($id)->id),
+	      'params'=>array(':roomId'=>$id),
 	    ),
 	    'pagination'=>false,
 	  ));
 	  $roomOptionsDataProvider=new CActiveDataProvider('RoomOptions',array(
 	    'criteria'=>array(
 	      'condition'=>'room_id=:roomId',
-	      'params'=>array(':roomId'=>$this->loadModel($id)->id),
+	      'params'=>array(':roomId'=>$id),
 	    ),
 	    'pagination'=>false,
 	  ));
 	  $roomChargesDataProvider=new CActiveDataProvider('RoomCharges',array(
 	    'criteria'=>array(
 	      'condition'=>'room_id=:roomId',
-	      'params'=>array(':roomId'=>$this->loadModel($id)->id),
+	      'params'=>array(':roomId'=>$id),
 	    ),
 	    'pagination'=>false,
-	  ));
-	  $roomImagesDataProvider=new CActiveDataProvider('RoomImages',array(
+	  ));	  
+	  
+	  $roomImagesDataProvider = new CActiveDataProvider('Images',
+	  		array(
+	  				'criteria'=>array(
+	  						'with'=>array('rooms'=>array(
+	  								'on'=>'rooms.id=' .$id,
+	  								'together'=>true,
+	  								'joinType'=>'INNER JOIN',
+	  						)),
+	  				),
+	  				'pagination' => false,
+	  		)
+	  );
+	  
+	  
+	  
+	  
+	/*  
+	  $roomImagesDataProvider=new CActiveDataProvider('Images',array(
 	    'criteria'=>array(
 	      'condition'=>'room_id=:roomId',
 	      'params'=>array(':roomId'=>$this->loadModel($id)->id),
 	    ),
 	    'pagination'=>false,
 	  ));
-	  
+	  */
 	  $this->render('view',array(
 	    'model'=>$this->loadModel($id),
 	    'roomNoticesDataProvider'=>$roomNoticesDataProvider,
@@ -127,11 +145,6 @@ public function actionLoaddistricts()
 	}
 
 	
-	public function actionTest(){
-		$model=new Rooms;
-		$model->place_id = $this->_place->id;
-	
-	}
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -143,7 +156,9 @@ public function actionLoaddistricts()
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 		$related = array();
-		$images = array();
+		$tempImages = array();
+		$tempFilenames = array();
+		
 		if(isset($_POST['Rooms']))
 		{
 			$model->attributes=$_POST['Rooms'];
@@ -157,50 +172,42 @@ public function actionLoaddistricts()
 			  $model->roomOptions = $_POST['RoomOptions'];
 			   $related[] = 'roomOptions';
 			}
+			
 			if (isset($_POST['RoomImages'])) {
-				//$model->roomImages = $_POST['RoomImages'];
-				
-					foreach ( $_POST['RoomImages'] as $i => $roomImage ) {
-						$image = new RoomImages ();
-						$image->setAttributes ( $roomImage );
-						$rnd = $random = date ( time () );
-						$image->photo = CUploadedFile::getInstance ( $image, "[$i]photo" );
-						$fileName = "{$rnd}-{$image->photo->getName()}"; // random number + file name
-						$image->filename = $fileName;
-						$image->photo->saveAs ( Yii::app ()->basePath . '/../upload/room/' . $fileName ); // image will uplode to rootDirectory/banner/
-						Yii::import ( 'application.extensions.image.Image' );
-						$thumb = new Image ( Yii::app ()->basePath . '/../upload/room/' . $fileName );
-						$thumb->resize ( 200, 200 );
-						$thumb->save ( Yii::app ()->basePath . '/../upload/room/t_' . $fileName );
-						// @FIXME : 일단 올리고보자..?
-						if ($image->validate ()) {
-							$images[]=array(
-									'filename' => $image->filename,
-									'caption' => $image->caption,
-									'content' => $image->content,
-							);
-						}
+				$tempPost = $_POST['RoomImages'];
+				$image = new RoomImages();
+
+				foreach ( $_POST['RoomImages'] as $i => $roomImage ) {
+					$image -> setAttributes($roomImage);
+					$rnd = $random = date ( time () );
+						
+					$tempImages["{$i}"] = CUploadedFile::getInstance ( $image, "[$i]photo" );
+					$tempFileNames["{$i}"] = "{$rnd}-{$tempImages[$i]->getName()}"; // random number + file name
+					$tempPost[$i]['filename'] = $tempFileNames[$i];
+					unset($tempPost[$i]['photo']);
 				}
-								
-				$model->roomImages = $images;
-				fb($model->roomImages);
 				
-				$related[] = 'roomImages';
-			  
+				$model->roomImages = $tempPost;
+				$related[] = 'roomImages';			  
 			}
-				fb($model);
+
+		
 			if($re = $model->saveWithRelated($related)){
-				fb($re);
+				foreach($tempImages as $i => $tempImage){
+					$tempImages["{$i}"]->saveAs ( Yii::app ()->basePath . '/../upload/room/' . $tempFileNames["{$i}"] ); // image will uplode to rootDirectory/banner/
+					Yii::import ( 'application.extensions.image.Image' );
+					$thumb = new Image ( Yii::app ()->basePath . '/../upload/room/' . $tempFileNames["{$i}"] );
+					$thumb->resize ( 200, 200 );
+					$thumb->save ( Yii::app ()->basePath . '/../upload/room/t_' . $tempFileNames["{$i}"] );
+				}
 				$this->redirect(array('view','id'=>$model->id));
 			}
-				fb($re);			
 		}
 
 
 		
 		$this->render('create',array(
 			'model'=>$model,
-		  'photosNumber' => isset($_POST['PhotoEvent']) ? count($_POST['PhotoEvent'])-1 : 0, //How many PhotoEvent the user added
 		));
 	}
 
@@ -215,65 +222,63 @@ public function actionLoaddistricts()
 		// Uncomment the following line if AJAX validation is needed
 			// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+		$tempImages = array();
+		$tempFilenames = array();
 		$related = array();
-		$images = array();
 		if(isset($_POST['Rooms']))
 		{
 			$model->attributes=$_POST['Rooms'];
 			
 			if (isset($_POST['RoomCharges'])) {
 			  $model->roomCharges = $_POST['RoomCharges'];
-			  $related[] = 'roomCharges';
 			}
+			$related[] = 'roomCharges';
 
 			if (isset($_POST['RoomOptions'])) {
 			  $model->roomOptions = $_POST['RoomOptions'];
-			   $related[] = 'roomOptions';
 			}
+			$related[] = 'roomOptions';
+
 			if (isset($_POST['RoomImages'])) {
-				//$model->roomImages = $_POST['RoomImages'];
-				
-					foreach ( $_POST['RoomImages'] as $i => $roomImage ) {
-						$image = new RoomImages ();
-						$image->setAttributes ( $roomImage );
+				$tempPost = $_POST['RoomImages'];
+				$image = new RoomImages();
+				foreach ( $_POST['RoomImages'] as $i => $roomImage ) {
+					$image -> setAttributes($roomImage);
+					fb($image->filename);
+					if(!($image->filename))
+					{
 						$rnd = $random = date ( time () );
-						$image->photo = CUploadedFile::getInstance ( $image, "[$i]photo" );
-						$fileName = "{$rnd}-{$image->photo->getName()}"; // random number + file name
-						$image->filename = $fileName;
-						$image->photo->saveAs ( Yii::app ()->basePath . '/../upload/room/' . $fileName ); // image will uplode to rootDirectory/banner/
-						Yii::import ( 'application.extensions.image.Image' );
-						$thumb = new Image ( Yii::app ()->basePath . '/../upload/room/' . $fileName );
-						$thumb->resize ( 200, 200 );
-						$thumb->save ( Yii::app ()->basePath . '/../upload/room/t_' . $fileName );
-						// @FIXME : 일단 올리고보자..?
-						if ($image->validate ()) {
-							$images[]=array(
-									'filename' => $image->filename,
-									'caption' => $image->caption,
-									'content' => $image->content,
-							);
-						}
+			
+						$tempImages["{$i}"] = CUploadedFile::getInstance ( $image, "[$i]photo" );
+						$tempFileNames["{$i}"] = "{$rnd}-{$tempImages[$i]->getName()}"; // random number + file name
+						$tempPost[$i]['filename'] = $tempFileNames[$i];
+						unset($tempPost[$i]['photo']);
+					}
 				}
-								
-				$model->roomImages = $images;
-				fb($model->roomImages);
-				
-				$related[] = 'roomImages';
-			  
+				fb($tempPost);
+				$model->$roomImages = $tempPost;
+			}else{
+				$model->roomImages = NULL;
 			}
-				fb($model);
+			$related[] = 'roomImages';
+			
 			if($re = $model->saveWithRelated($related)){
 				fb($re);
-				$this->redirect(array('view','id'=>$model->id));
+				foreach($tempImages as $i => $tempImage){
+					$tempImages["{$i}"]->saveAs ( Yii::app ()->basePath . '/../upload/room/' . $tempFileNames["{$i}"] ); // image will uplode to rootDirectory/banner/
+					Yii::import ( 'application.extensions.image.Image' );
+					$thumb = new Image ( Yii::app ()->basePath . '/../upload/room/' . $tempFileNames["{$i}"] );
+					$thumb->resize ( 200, 200 );
+					$thumb->save ( Yii::app ()->basePath . '/../upload/room/t_' . $tempFileNames["{$i}"] );
+				}
+				$this->redirect(array('view','id'=>$id));
 			}
-				fb($re);			
 		}
 
 
 		
 		$this->render('create',array(
 			'model'=>$model,
-		  'photosNumber' => isset($_POST['PhotoEvent']) ? count($_POST['PhotoEvent'])-1 : 0, //How many PhotoEvent the user added
 		));
 	}
 
@@ -309,10 +314,10 @@ public function actionLoaddistricts()
 	    $state = array($_GET['state']);
 	  if(isset($_GET['city']))
 	    $city = array($_GET['city']);
-	  if(isset($_GET['max']))
-	    $max_price = $_GET['max'];
-	  if(isset($_GET['min']))
-	    $min_price = $_GET['min'];
+	  if(isset($_GET['slider_priceleft']))
+	    $max_price = $_GET['slider_priceleft'];
+	  if(isset($_GET['slider_priceright']))
+	    $min_price = $_GET['slider_priceright'];
 
 
 	  /* 	  if(isset($_GET['district']))
@@ -323,25 +328,65 @@ public function actionLoaddistricts()
 	  */
 
 	  $criteria = new CDbCriteria();
-	  $criteria->with = array( 'places' );
+	  $criteria->with = array( 'places'  => array('alias'=>'pl'),
+	  		'roomOptions'  => array('alias'=>'ro'));
 	  //$criteria->with = array( 'roomCharges' );
    
 	  if(isset($state) && $state!=['']){
-	    $criteria->compare('places.state', $state, false);
+	    $criteria->compare('pl.state', $state, false);
 	  }
 	  if(isset($city) && $city!=['']){
-	    $criteria->compare('places.city', $city, false);
+	    $criteria->compare('pl.city', $city, false);
 	  }
+
 /* 
 	  if(!empty($this->district))
 	    $criteria->addInCondition('places.district', $district);
 */	  
- 	  //if(isset($max_price) && $max_price!='')
-	   // $criteria->addCondition('roomCharges.price > '.$max_price);
+	  /*
+ 	  if(isset($max_price) && $max_price!='')
+	    $criteria->compare('rc.price > '.$max_price, false);
 	  
-	  //if(isset($min_price) && $min_price!='')
-	  //  $criteria->addCondition('roomCharges.price < '.$min_price);
-	   
+	  if(isset($min_price) && $min_price!='')
+	    $criteria->compare('rc.price < '.$min_price, false);
+	   */
+	  
+	  
+	  
+	  /*
+	  
+	 
+	  $conditions            = array();
+	  $criteria              = new CDbCriteria;
+	  $criteria->alias       = 'order';
+	  $criteria->select      = 'order.*';
+	  $criteria->join        = '';
+	  $criteria->join .= " LEFT JOIN " . OrderDetails::model()->tableName() . " orderDetails ON orderDetails.order_id = order.id";
+	  $criteria->join .= " LEFT JOIN " . User::model()->tableName() . " user ON user.id = orderDetails.user_id";
+	  $criteria->join .= " LEFT JOIN " . Product::model()->tableName() . " product ON product.id = orderDetails.product_id";
+	  //consider search box submitting variable name as “searchKeyword”
+	  // 1. for user name search. conditional statements ofcourse will be added before.
+	  $conditions[] = "user.username LIKE ‘" . $_REQUEST['searchKeyword'] . "%’";
+	  // 2. for product name search. conditional statements ofcourse will be added before.
+	  $conditions[] = "product.product_name LIKE ‘" . $_REQUEST['searchKeyword'] . "%’";
+	  
+	  
+	  */
+	  
+	  
+	  
+	  /*
+	  
+	  //To get Max/Min
+	  $criteria_max = $criteria;
+	  $criteria_max->select = 'MAX(rc.price) as maxprice';
+	  $max = Rooms::model()->find($criteria);
+	  fb($max);
+	  $criteria_min = $criteria;
+	  //$criteria_min->select = 'MIN(rc.price) as minprice';
+	  $min = Rooms::model()->find($criteria);
+	  fb($min);
+	  */
 		$dataProvider=new CActiveDataProvider('Rooms',
 		  array('criteria'=>$criteria)
 		);  

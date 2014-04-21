@@ -10,8 +10,6 @@ $this->breadcrumbs=array(
 $this->menu=array(
  
   array('label'=>'여기에 ' . Yii::t('app', '강의실 등록하기') , 'url'=>array('rooms/create','pid'=>$model->id)),
-  array('label'=>$model->label() . Yii::t('app', '사진 등록하기') , 'url'=>array('placeImages/create','pid'=>$model->id)),
-  
   array('label'=>$model->label(2). ' ' . Yii::t('app', '더 보기'), 'url'=>array('index')),
   array('label'=>$model->label(). ' ' . Yii::t('app', '등록하기'), 'url'=>array('create')),
   array('label'=>$model->label(). ' ' . Yii::t('app', '수정') , 'url'=>array('update', 'id' => $model->id)),
@@ -24,10 +22,11 @@ $this->menu=array(
 
 
 <?php
+
 $images = array();
+
 foreach ($model->placeImages as $record) {
-  $images[] = array(
-    
+  $images[] = array(  
         'url' => Yii::app()->request->baseUrl . '/upload/place/' . $record->filename,
         'src' => Yii::app()->request->baseUrl . '/upload/place/t_' . $record->filename,
           'options' => array('title' => $record->title)
@@ -41,7 +40,7 @@ if (count($images)) {
 <br />
 <h1>Place Images</h1>
 
-<?php $this->widget('yiiwheels.widgets.gallery.WhGallery', array('items' => $images));?>
+<?php $this->widget('yiiwheels.widgets.gallery.WhGallery', array('items' => $images)); ?>
 
 
 
