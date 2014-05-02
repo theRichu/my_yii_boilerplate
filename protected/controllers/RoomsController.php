@@ -256,7 +256,7 @@ public function actionLoaddistricts()
 					}
 				}
 				fb($tempPost);
-				$model->$roomImages = $tempPost;
+				$model->roomImages = $tempPost;
 			}else{
 				$model->roomImages = NULL;
 			}
@@ -277,7 +277,7 @@ public function actionLoaddistricts()
 
 
 		
-		$this->render('create',array(
+		$this->render('update',array(
 			'model'=>$model,
 		));
 	}
@@ -301,99 +301,14 @@ public function actionLoaddistricts()
 	 */
 	public function actionIndex()
 	{
-	 // $model=new Rooms('search');
-	  $model=new SearchRooms();
+	  $model=new Rooms('search');
 	  $model->unsetAttributes();  // clear any default values
-	  	 
-	  //$model_place=new Places('search');
-	  //$model_place->unsetAttributes();  // clear any default values
-	  
 	  if(isset($_GET['Rooms']))
-	    $model->attributes=$_GET['Rooms'];
-	  if(isset($_GET['state']))
-	    $state = array($_GET['state']);
-	  if(isset($_GET['city']))
-	    $city = array($_GET['city']);
-	  if(isset($_GET['slider_priceleft']))
-	    $max_price = $_GET['slider_priceleft'];
-	  if(isset($_GET['slider_priceright']))
-	    $min_price = $_GET['slider_priceright'];
+	  	$model->attributes=$_GET['Rooms'];
+	   
 
-
-	  /* 	  if(isset($_GET['district']))
-	   {
-	  $state = $_GET['district'];
-	  } 
-	  
-	  */
-
-	  $criteria = new CDbCriteria();
-	  $criteria->with = array( 'places'  => array('alias'=>'pl'),
-	  		'roomOptions'  => array('alias'=>'ro'));
-	  //$criteria->with = array( 'roomCharges' );
-   
-	  if(isset($state) && $state!=['']){
-	    $criteria->compare('pl.state', $state, false);
-	  }
-	  if(isset($city) && $city!=['']){
-	    $criteria->compare('pl.city', $city, false);
-	  }
-
-/* 
-	  if(!empty($this->district))
-	    $criteria->addInCondition('places.district', $district);
-*/	  
-	  /*
- 	  if(isset($max_price) && $max_price!='')
-	    $criteria->compare('rc.price > '.$max_price, false);
-	  
-	  if(isset($min_price) && $min_price!='')
-	    $criteria->compare('rc.price < '.$min_price, false);
-	   */
-	  
-	  
-	  
-	  /*
-	  
-	 
-	  $conditions            = array();
-	  $criteria              = new CDbCriteria;
-	  $criteria->alias       = 'order';
-	  $criteria->select      = 'order.*';
-	  $criteria->join        = '';
-	  $criteria->join .= " LEFT JOIN " . OrderDetails::model()->tableName() . " orderDetails ON orderDetails.order_id = order.id";
-	  $criteria->join .= " LEFT JOIN " . User::model()->tableName() . " user ON user.id = orderDetails.user_id";
-	  $criteria->join .= " LEFT JOIN " . Product::model()->tableName() . " product ON product.id = orderDetails.product_id";
-	  //consider search box submitting variable name as “searchKeyword”
-	  // 1. for user name search. conditional statements ofcourse will be added before.
-	  $conditions[] = "user.username LIKE ‘" . $_REQUEST['searchKeyword'] . "%’";
-	  // 2. for product name search. conditional statements ofcourse will be added before.
-	  $conditions[] = "product.product_name LIKE ‘" . $_REQUEST['searchKeyword'] . "%’";
-	  
-	  
-	  */
-	  
-	  
-	  
-	  /*
-	  
-	  //To get Max/Min
-	  $criteria_max = $criteria;
-	  $criteria_max->select = 'MAX(rc.price) as maxprice';
-	  $max = Rooms::model()->find($criteria);
-	  fb($max);
-	  $criteria_min = $criteria;
-	  //$criteria_min->select = 'MIN(rc.price) as minprice';
-	  $min = Rooms::model()->find($criteria);
-	  fb($min);
-	  */
-		$dataProvider=new CActiveDataProvider('Rooms',
-		  array('criteria'=>$criteria)
-		);  
-	
 		$this->render('index',array(
 		  'model'=>$model,
-			'dataProvider'=>$dataProvider,
 		));
 	}
 

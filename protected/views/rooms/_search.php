@@ -2,79 +2,127 @@
 /* @var $this RoomsController */
 /* @var $model Rooms */
 /* @var $form CActiveForm */
+
+$state = (isset ( $_GET ['state'] )) ? CHtml::encode ($_GET ['state']) : '';
+$city = (isset ( $_GET ['city'] )) ? CHtml::encode ($_GET ['city']) : '';
+$p = (isset ( $_GET ['p'] )) ? CHtml::encode ($_GET ['p']) : '';
+$q = (isset ( $_GET ['q'] )) ? CHtml::encode ( $_GET ['q'] ) : '';
+
+$option_model = Options::model ()->findAll ();
+$options = array ();
+foreach ( $option_model as $record ) {
+	$options [$record->id] = $record->name;
+}
+
+$state_setting = array (
+		'prompt' => '도/광역시',
+		'span' => 2,
+		'ajax' => array (
+				'type' => 'POST',
+				'url' => CController::createUrl ( 'loadcities' ),
+				'update' => '#city',
+				'data' => array (
+						'state' => 'js:this.value' 
+				) 
+		),
+		'options' => array (
+				$state => array (
+						'selected' => 'selected' 
+				) 
+		) 
+);
+
+$city_setting = array (
+		'prompt' => '시/군/구',
+		'span' => 2,
+		'options' => array (
+				$city => array (
+						'selected' => 'selected' 
+				) 
+		) 
+); 
 ?>
 
 <div class="wide form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'action'=>Yii::app()->createUrl($this->route),
-	'method'=>'get',
-)); ?>
+<?php
 
+$form = $this->beginWidget ( 'bootstrap.widgets.TbActiveForm', array (
+		'action' => Yii::app ()->createUrl ( $this->route ),
+		'method' => 'GET' ,
+) );
+
+echo TbHtml::dropDownList ( 'state', 'state', $model->getStateOptions(), $state_setting );
+echo TbHtml::dropDownList ( 'city', 'city', $model->getCityOptions ($state),$city_setting);
+
+?>
+<div class="row">
+<?php
+ 
+echo TbHtml::textField ( 'q', '', array (
+		//'class' => 'input-medium',
+		'value' => isset ( $_GET ['q'] ) ? CHtml::encode ( $_GET ['q'] ) : '',
+		'placeholder' => '검색',
+		'prepend' => '<i class="icon-search"></i>' ,
+		'span' => 4
+
+));
+?>
+	</div>
+		<div class="row">
+<?php 
+echo TbHtml::textField ( 'p', '', array (
+		'value' => isset ( $_GET ['p'] ) ? CHtml::encode ( $_GET ['p'] ) : '',
+		'placeholder' => '인원수',
+		'span' => 1
+));
+?>
+	</div>
+	
 	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-	</div>
+<?php 
+echo TbHtml::inlineCheckBoxList ( 'option', '', $options ,array( 'span'=> 2));
+?>
+</div>
+<?php 
 
-	<div class="row">
-		<?php echo $form->label($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'place_id'); ?>
-		<?php echo $form->textField($model,'place_id'); ?>
-	</div>
+$max = (isset($_GET['max']))?$_GET['max']:80000;
+$min = (isset($_GET['min']))?$_GET['min']:20000;
 
-	<div class="row">
-		<?php echo $form->label($model,'capacity'); ?>
-		<?php echo $form->textField($model,'capacity'); ?>
-	</div>
+$this->widget(
+		'yiiwheels.widgets.rangeslider.WhRangeSlider',
+		array(
+				'id'       => 'price',
+				'name'     => 'price',
+				'delayOut' => 4000,
+				'type'     => 'editRange',
+				'minDefaultValue' => $min,
+				'maxDefaultValue' => $max,
+				'minValue' => $min,
+				'maxValue' => $max,
+				'step' => 10000,
 
-	<div class="row">
-		<?php echo $form->label($model,'floorspace'); ?>
-		<?php echo $form->textField($model,'floorspace'); ?>
-	</div>
+		)
+);
+?>
 
-	<div class="row">
-		<?php echo $form->label($model,'contactnumber'); ?>
-		<?php echo $form->textField($model,'contactnumber',array('size'=>60,'maxlength'=>255)); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'workstart'); ?>
-		<?php echo $form->textField($model,'workstart'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'workto'); ?>
-		<?php echo $form->textField($model,'workto'); ?>
-	</div>
+<?php
 
-	<div class="row">
-		<?php echo $form->label($model,'create_time'); ?>
-		<?php echo $form->textField($model,'create_time'); ?>
-	</div>
+echo TbHtml::formActions ( array (
+		TbHtml::submitButton ( '검색', array (
+				'color' => TbHtml::BUTTON_COLOR_PRIMARY 
+		) ) ,
+TbHtml::button('Cancel'),
+) );
 
-	<div class="row">
-		<?php echo $form->label($model,'create_user_id'); ?>
-		<?php echo $form->textField($model,'create_user_id'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'update_time'); ?>
-		<?php echo $form->textField($model,'update_time'); ?>
-	</div>
+$this->endWidget ();
+unset ( $form );
+?>
 
-	<div class="row">
-		<?php echo $form->label($model,'update_user_id'); ?>
-		<?php echo $form->textField($model,'update_user_id'); ?>
-	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Search'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-
-</div><!-- search-form -->
+</div>
+<!-- search-form -->

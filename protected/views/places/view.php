@@ -7,6 +7,16 @@ $this->breadcrumbs=array(
 	$model->name,
 );
 
+$images = array();
+
+foreach ($model->placeImages as $record) {
+	$images[] = array(
+			'url' => Yii::app()->request->baseUrl . '/upload/place/' . $record->filename,
+			'src' => Yii::app()->request->baseUrl . '/upload/place/t_' . $record->filename,
+			'options' => array('title' => $record->title)
+	);
+}
+
 $this->menu=array(
  
   array('label'=>'여기에 ' . Yii::t('app', '강의실 등록하기') , 'url'=>array('rooms/create','pid'=>$model->id)),
@@ -22,36 +32,31 @@ $this->menu=array(
 
 
 <?php
-
-$images = array();
-
-foreach ($model->placeImages as $record) {
-  $images[] = array(  
-        'url' => Yii::app()->request->baseUrl . '/upload/place/' . $record->filename,
-        'src' => Yii::app()->request->baseUrl . '/upload/place/t_' . $record->filename,
-          'options' => array('title' => $record->title)
-  );
-}
 if (count($images)) {
  $this->widget('yiiwheels.widgets.gallery.WhCarousel', array('items' => $images));
- }
-?>
-
-<br />
+ ?>
+<br/>
 <h1>Place Images</h1>
-
-<?php $this->widget('yiiwheels.widgets.gallery.WhGallery', array('items' => $images)); ?>
-
-
-
-
-
+<?php $this->widget('yiiwheels.widgets.gallery.WhGallery', array('items' => $images)); }?>
 
 <h2>공간들</h2>
-<?php $this->widget('zii.widgets.CListView', array(
-    'dataProvider'=>$roomsDataProvider,
-    'itemView'=>'/rooms/_view',
-)); ?>
+<?php
+$this->widget('zii.widgets.CListView', array(
+		'dataProvider'=>$roomsDataProvider,
+		'id'=>'placeSearchResult',
+		'itemView'=>'/rooms/_view',
+		'itemsTagName'=>'ul',
+		'itemsCssClass'=>'thumbnails',
+		'htmlOptions' => array(
+				'class' => 'row-fluid',
+		),
+		'summaryText'=>'Displaying {start}-{end} of {count} results.',
+		'template' => "{pager}{items}{summary}",
+		'enablePagination'=>true,
+		'ajaxUpdate'=>true,
+)); 
+ ?>
+
 <?php 
 if(($model->map_lat) && ($model->map_lag)){
   Yii::import('ext.EGMAP.*');

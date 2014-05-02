@@ -68,13 +68,6 @@ if (count($images)) {
 
 
 <br />
-<h1>Room Images</h1>
-
-<?php $this->widget('yiiwheels.widgets.gallery.WhGallery', array('items' => $images));?>
-
-<br />
-
-	
 
 
 
@@ -82,8 +75,8 @@ if (count($images)) {
 <?php 
 $charges = array();
 foreach ($model->roomCharges as $record) {
-  $charges[] = array(
-    $record->id => $record->description ." : " .$record->price ,
+  $charges[$record->description] = array(
+    $record->id => $record->description. " : " .$record->price ,
   );
 }
 
@@ -93,20 +86,14 @@ echo TbHtml::dropDownList('dropDown', '', $charges);
 <?php
 $options = array();
 foreach ($model->roomOptions as $record) {
-  $options[] = array(
-    $record->option_id => $record->option->name,
+  $options[$record->option->name] = array(
+    $record->option_id => "가격 : ". $record->description.", ". $record->price,
   );
 }
 
 echo TbHtml::dropDownList('dropDown', '', $options);
 ?>
-<?php /*  echo TbHtml::linkButton('지금 예약하기', 
-  array(
-    'color' => TbHtml::BUTTON_COLOR_PRIMARY,
-    'size' => TbHtml::BUTTON_SIZE_LARGE,
-    'url' => array('reservations/create', 'id'=>$model->id, 'rid'=>$model->id),
-)
-); */?>
+
 
 <?php $this->widget('bootstrap.widgets.TbModal', array(
     'id' => 'myModal',
@@ -128,6 +115,15 @@ echo TbHtml::button('지금 예약하기', array(
 ?>
 
 <br/>
+<h1>Room Images</h1>
+
+<?php $this->widget('yiiwheels.widgets.gallery.WhGallery', array('items' => $images));?>
+
+<br />
+
+	
+
+
 	
 	<?php echo TbHtml::tabbableTabs(array(
     array('label' => '예약현황', 'active' => true,

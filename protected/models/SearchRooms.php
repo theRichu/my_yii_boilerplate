@@ -1,4 +1,5 @@
 <?php 
+
 class SearchRooms extends CFormModel
 {
     public $min_price;
@@ -8,7 +9,6 @@ class SearchRooms extends CFormModel
     
     public $state;
     public $city;
-//    public $district;
     public $option;
     public $name;
     

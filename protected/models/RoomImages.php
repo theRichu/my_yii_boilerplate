@@ -65,7 +65,7 @@ class RoomImages extends StoryBoxActiveRecord {
 						'max' => 255 
 				),
 				array (
-						'content, create_time, update_time',
+						'description, create_time, update_time',
 						'safe' 
 				),
 				// The following rule is used by search().

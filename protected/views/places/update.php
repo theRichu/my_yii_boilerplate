@@ -9,10 +9,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Places', 'url'=>array('index')),
-	array('label'=>'Create Places', 'url'=>array('create')),
-	array('label'=>'View Places', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Places', 'url'=>array('admin')),
+	array('label'=>'장소 리스트', 'url'=>array('index')),
+	array('label'=>'장소 등록하기', 'url'=>array('create')),
+	array('label'=>'장소 보기', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'장소 등록하기', 'url'=>array('admin')),
 );
 ?>
 

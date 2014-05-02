@@ -28,7 +28,7 @@ class PlacesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'loadcities'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -45,6 +45,28 @@ class PlacesController extends Controller
 		);
 	}
 
+	
+	public function actionLoadcities()
+	{
+		fb("loadcities");
+	
+		if (Yii::app()->request->isAjaxRequest){
+			$data=Places::model()->findAll('state=:state', array(':state'=>$_POST['state']));
+			$data=CHtml::listData($data,'city','city');
+	
+			echo "<option value=''>시/군/구</option>";
+			foreach($data as $value=>$city_name)
+				echo CHtml::tag('option', array('value'=>$value),CHtml::encode($city_name),true);
+		}
+	
+		else
+		{
+			 
+		}
+	}
+	
+	
+	
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -58,9 +80,6 @@ class PlacesController extends Controller
 	    ),
 	    'sort'=>array(
 	      'defaultOrder'=>'create_time DESC',
-	    ),
-	    'pagination'=>array(
-	      'pageSize'=>10,
 	    ),
 	  ));
 	  $this->render('view',array(
@@ -95,7 +114,8 @@ class PlacesController extends Controller
 					$image->photo = CUploadedFile::getInstance ( $image, "[$i]photo" );
 						
 					$tempImages["{$i}"] = CUploadedFile::getInstance ( $image, "[$i]photo" );
-					$tempFileNames["{$i}"] = "{$rnd}-{$tempImages[$i]->getName()}"; // random number + file name
+					$tempFileNames["{$i}"] = md5("{$rnd}-{$tempImages[$i]->getName()}"); // random number + file name
+					$tempFileNames["{$i}"] .= ".".$tempImages[$i]->getExtensionName( );
 					$tempPost[$i]['filename'] = $tempFileNames[$i];
 					unset($tempPost[$i]['photo']);
 				}
@@ -142,30 +162,31 @@ class PlacesController extends Controller
 				$tempPost = $_POST['PlaceImages'];
 				$image = new PlaceImages();
 				foreach ( $_POST['PlaceImages'] as $i => $placeImage ) {
+					$image = new PlaceImages();
 					$image -> setAttributes($placeImage);		
-					fb($image->filename);
-					if(!($image->filename))
+
+					if(!(isset($image->filename)?$image->filename:'') !='')
 					{
 						$rnd = $random = date ( time () );
-						
+
 						$tempImages["{$i}"] = CUploadedFile::getInstance ( $image, "[$i]photo" );
-						$tempFileNames["{$i}"] = "{$rnd}-{$tempImages[$i]->getName()}"; // random number + file name
+
+						$tempFileNames["{$i}"] = md5("{$rnd}-{$tempImages[$i]->getName()}"); // random number + file name
+						$tempFileNames["{$i}"] .= ".".$tempImages[$i]->getExtensionName();
+
 						$tempPost[$i]['filename'] = $tempFileNames[$i];
-						unset($tempPost[$i]['photo']);
+						
+						unset($tempPost[$i]['photo']);						
+
 					}
 				}
-				fb($tempPost);
 				$model->placeImages = $tempPost;				
 			}else{
 				$model->placeImages = NULL;
 			}
-			fb($model -> id);
 			$related[] = 'placeImages';
-			
-			fb($related);
 				
 			if($re = $model->saveWithRelated($related)){
-				fb($re);
 				foreach($tempImages as $i => $tempImage){
 					$tempImages["{$i}"]->saveAs ( Yii::app ()->basePath . '/../upload/place/' . $tempFileNames["{$i}"] ); // image will uplode to rootDirectory/banner/
 					Yii::import ( 'application.extensions.image.Image' );
@@ -176,9 +197,6 @@ class PlacesController extends Controller
 				$this->redirect(array('view','id'=>$id));
 			}
 		}
-				
-
-
 		$this->render('update',array(
 			'model'=>$model,
 		));
@@ -203,29 +221,43 @@ class PlacesController extends Controller
 	 */
 	public function actionIndex()
 	{
-	  $model=new Places('search');
-	  $model->unsetAttributes();  // clear any default values
-	  if(isset($_GET['Places']))
-	    $model->attributes=$_GET['Places'];
-	   
-	  
-	  
-		$criteria = new CDbCriteria();
-		
+		$model=new Places('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Places']))
+			$model->attributes=$_GET['Places'];
+
+		if(isset($_GET['Places']))
+			$model->attributes=$_GET['Places'];
+		if(isset($_GET['state']))
+			$state = array($_GET['state']);
+		if(isset($_GET['city']))
+			$city = array($_GET['city']);
 		if(isset($_GET['q']))
+			$q = $_GET['q'];
+			
+		$criteria=new CDbCriteria;
+		
+		if(isset($state) && $state!=['']){
+			$criteria->compare('t.state', $state, false);
+		}
+		if(isset($city) && $city!=['']){
+			$criteria->compare('t.city', $city, false);
+		}
+		if(isset($q) && $q!=[''])
 		{
-		  $q = $_GET['q'];
-		  $criteria->compare('name', $q, true, 'OR');
-		  $criteria->compare('description', $q, true, 'OR');
+			$criteria->compare('t.name', $q, true, 'OR');
+			$criteria->compare('t.description', $q,  true, 'OR');
 		}
 		
-		$dataProvider=new CActiveDataProvider
-		
-		("Places", array('criteria'=>$criteria));
-		
+		$pagination=false;
+		$dp = new CActiveDataProvider("Places", array(
+				'criteria'=>$criteria,
+				'pagination'=>$pagination,
+		));
+	  
 		$this->render('index',array(
 		  'model'=>$model,
-		  'dataProvider'=>$dataProvider,
+			'dataProvider'=>$dp,
 		));
 	}
 

@@ -57,7 +57,7 @@ class PlaceImages extends StoryBoxActiveRecord {
 						'max' => 255 
 				),
 				array (
-						'title, photo, description',
+						'title, photo, description, filename',
 						'safe' 
 				),
 				// The following rule is used by search().

@@ -95,6 +95,19 @@ class Places extends StoryBoxActiveRecord
 		);
 	}
 
+
+	public function getStateOptions()
+	{
+		$data=Places::model()->findAll();
+		$data=CHtml::listData($data,'state','state');
+		return $data;
+	}
+	public function getCityOptions($state)
+	{
+		$data=Places::model()->findAll('state=:state', array(':state'=>$state));
+		$data=CHtml::listData($data,'city','city');
+		return $data;
+	}
 	
 	
 	/**
@@ -111,28 +124,43 @@ class Places extends StoryBoxActiveRecord
 	 */
 	public function search()
 	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
+		fb("IN SEARCH");
 
+
+		if(isset($_GET['Places']))
+			$model->attributes=$_GET['Places'];
+		if(isset($_GET['state']))
+			$state = array($_GET['state']);
+		if(isset($_GET['city']))
+			$city = array($_GET['city']);
+		if(isset($_GET['q']))
+			$q = $_GET['q'];
+			
 		$criteria=new CDbCriteria;
 		
-
-		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('address',$this->address,true);
-		$criteria->compare('state',$this->state,true);
-		$criteria->compare('city',$this->city,true);
-	//	$criteria->compare('district',$this->distract,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('map_lat',$this->map_lat);
-		$criteria->compare('map_lag',$this->map_lag);
-		$criteria->compare('create_time',$this->create_time,true);
-		$criteria->compare('create_user_id',$this->create_user_id);
-		$criteria->compare('update_time',$this->update_time,true);
-		$criteria->compare('update_user_id',$this->update_user_id);
-
-		return new CActiveDataProvider($this, array(
+		if(isset($state) && $state!=['']){
+			$criteria->compare('t.state', $state, false);
+		}
+		if(isset($city) && $city!=['']){
+			$criteria->compare('t.city', $city, false);
+		}
+		if(isset($q) && $q!=[''])
+		{
+			$criteria->compare('t.name', $q, true, 'OR');
+			$criteria->compare('t.description', $q,  true, 'OR');
+		}
+		
+		$pagination=array(
+				'pageSize'=>3,
+				'pageVar' =>'page',
+		);
+		$dp = new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'pagination'=>$pagination,
 		));
+//		$dp->setTotalItemCount(count($this->findAll($criteria)));
+
+		return $dp;
 	}
 
 	/**

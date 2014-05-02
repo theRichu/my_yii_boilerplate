@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Places', 'url'=>array('index')),
-	array('label'=>'Manage Places', 'url'=>array('admin')),
+	array('label'=>'장소 리스트', 'url'=>array('index')),
+	array('label'=>'장소 관리', 'url'=>array('admin')),
 );
 ?>
 

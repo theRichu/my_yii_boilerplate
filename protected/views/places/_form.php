@@ -36,7 +36,6 @@ $form = $this->beginWidget ( 'CActiveForm', array (
 		<?php //echo $form->textField($model,'address',array('size'=>60,'maxlength'=>255)); ?>
 		<?php
 		$this->widget ( 'ext.RGmapPicker.RGmapPicker', array (
-				'title' => 'Address',
 				'element_id' => 'Places',
 				'map_width' => 670,
 				'map_height' => 300,
@@ -46,6 +45,13 @@ $form = $this->beginWidget ( 'CActiveForm', array (
 		) );
 		?>
 		<?php echo $form->error($model,'address'); ?>
+		
+		<?php /* if(!($model->isNewRecord())){?>
+				<?php echo $form->hiddenField($model,'state',array('size'=>60,'maxlength'=>255)); ?>
+				<?php echo $form->hiddenField($model,'city',array('size'=>60,'maxlength'=>255)); ?>
+				<?php echo $form->hiddenField($model,'district',array('size'=>60,'maxlength'=>255)); ?>
+		<?php } */?>
+		
 	</div>
 
 		<div class="row">
