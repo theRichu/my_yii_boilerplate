@@ -127,15 +127,16 @@ class Places extends StoryBoxActiveRecord
 		fb("IN SEARCH");
 
 
-		if(isset($_GET['Places']))
-			$model->attributes=$_GET['Places'];
-		if(isset($_GET['state']))
-			$state = array($_GET['state']);
-		if(isset($_GET['city']))
-			$city = array($_GET['city']);
-		if(isset($_GET['q']))
-			$q = $_GET['q'];
-			
+		$state = Yii::app()->request->getQuery('state');
+		$city = Yii::app()->request->getQuery('city');
+		$p = Yii::app()->request->getQuery('p');
+		$q = Yii::app()->request->getQuery('q');
+		$options = Yii::app()->request->getQuery('option');
+		$page = Yii::app()->request->getQuery('page');
+		
+		//fb( Yii::app()->request->getQueryString() );
+		//fb($page);
+		
 		$criteria=new CDbCriteria;
 		
 		if(isset($state) && $state!=['']){
@@ -153,13 +154,12 @@ class Places extends StoryBoxActiveRecord
 		$pagination=array(
 				'pageSize'=>3,
 				'pageVar' =>'page',
+				'currentPage'=>$page-1,
 		);
 		$dp = new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 			'pagination'=>$pagination,
 		));
-//		$dp->setTotalItemCount(count($this->findAll($criteria)));
-
 		return $dp;
 	}
 

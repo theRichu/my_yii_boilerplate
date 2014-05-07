@@ -1,32 +1,18 @@
 <?php 
 Yii::import('ext.EGMAP.*');
+  $gMap = new EGMap();
 
-$gMap = new EGMap();
-
-$gMap->setJsName('place_map');
-$gMap->width = '100%';
-$gMap->height = '300';
-$gMap->zoom = 11;
-
-
-  for($i = 0; $i < count ( $dataProvider->getData () ); $i ++) {
-  	$place = $dataProvider->getData ()[$i];
-  	fb($place->name);
-  	$array_lat [] = $place->map_lat;
-  	$array_lag [] = $place->map_lag;
-  }
+  $gMap->setJsName('place_map');
+  $gMap->width = '100%';
+  $gMap->height = '300';
+  $gMap->zoom = 11;
+  $gMap->setCenter(37.541, 126.986);
   
-  $sum_lat = array_sum ( $array_lat );
-  $sum_lag = array_sum ( $array_lag );
-  $avg_lat = $sum_lat / sizeof ( $array_lat );
-  $avg_lag = $sum_lag / sizeof ( $array_lag );
   
-  $gMap->setCenter($avg_lat, $avg_lag);
-  /*  
-  $iterator =$dataProvider->getData();
+  $iterator =$this->dataProvider->getData();
 
   foreach($iterator as $i => $category) {
-  	$info_box[$i] = new EGMapInfoBox('<div style="color:#fff;border: 1px solid black; margin-top: 8px; background: #000; padding: 5px;">'.CHtml::link(CHtml::encode($category->name), array('places/view', 'id'=>$category->id)).'<br/>'.$category->address.'</div>');
+    $info_box[$i] = new EGMapInfoBox('<div style="color:#fff;border: 1px solid black; margin-top: 8px; background: #000; padding: 5px;">'.CHtml::link(CHtml::encode($category->name), array('places/view', 'id'=>$category->id)).'<br/>'.$category->address.'</div>');
 
     // set the properties
     $info_box[$i]->pixelOffset = new EGMapSize('0','-140');
@@ -47,9 +33,8 @@ $gMap->zoom = 11;
     $marker[$i]->addHtmlInfoBox($info_box[$i]);
     $gMap->addMarker($marker[$i]);
  }
-
- */
- $gMap->renderMap(); 
-  
  
+ 
+  $gMap->renderMap(); 
+  
   ?>

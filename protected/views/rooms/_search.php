@@ -3,10 +3,12 @@
 /* @var $model Rooms */
 /* @var $form CActiveForm */
 
-$state = (isset ( $_GET ['state'] )) ? CHtml::encode ($_GET ['state']) : '';
-$city = (isset ( $_GET ['city'] )) ? CHtml::encode ($_GET ['city']) : '';
-$p = (isset ( $_GET ['p'] )) ? CHtml::encode ($_GET ['p']) : '';
-$q = (isset ( $_GET ['q'] )) ? CHtml::encode ( $_GET ['q'] ) : '';
+
+$state = Yii::app()->request->getQuery('state');
+$city = Yii::app()->request->getQuery('city');
+$p = Yii::app()->request->getQuery('p');
+$q = Yii::app()->request->getQuery('q');
+$options = Yii::app()->request->getQuery('option');
 
 $option_model = Options::model ()->findAll ();
 $options = array ();
@@ -40,7 +42,7 @@ $city_setting = array (
 						'selected' => 'selected' 
 				) 
 		) 
-); 
+);
 ?>
 
 <div class="wide form">
@@ -49,62 +51,60 @@ $city_setting = array (
 
 $form = $this->beginWidget ( 'bootstrap.widgets.TbActiveForm', array (
 		'action' => Yii::app ()->createUrl ( $this->route ),
-		'method' => 'GET' ,
+		'method' => 'GET' 
 ) );
 
-echo TbHtml::dropDownList ( 'state', 'state', $model->getStateOptions(), $state_setting );
-echo TbHtml::dropDownList ( 'city', 'city', $model->getCityOptions ($state),$city_setting);
+echo TbHtml::dropDownList ( 'state', 'state', $model->getStateOptions (), $state_setting );
+echo TbHtml::dropDownList ( 'city', 'city', $model->getCityOptions ( $state ), $city_setting );
 
 ?>
 <div class="row">
 <?php
- 
+
 echo TbHtml::textField ( 'q', '', array (
-		//'class' => 'input-medium',
+		// 'class' => 'input-medium',
 		'value' => isset ( $_GET ['q'] ) ? CHtml::encode ( $_GET ['q'] ) : '',
 		'placeholder' => '검색',
-		'prepend' => '<i class="icon-search"></i>' ,
-		'span' => 4
-
-));
+		'prepend' => '<i class="icon-search"></i>',
+		'span' => 4 
+)
+ );
 ?>
 	</div>
-		<div class="row">
-<?php 
+  <div class="row">
+<?php
 echo TbHtml::textField ( 'p', '', array (
 		'value' => isset ( $_GET ['p'] ) ? CHtml::encode ( $_GET ['p'] ) : '',
 		'placeholder' => '인원수',
-		'span' => 1
-));
+		'span' => 1 
+) );
 ?>
 	</div>
-	
-	<div class="row">
-<?php 
-echo TbHtml::inlineCheckBoxList ( 'option', '', $options ,array( 'span'=> 2));
+
+  <div class="row">
+<?php
+echo TbHtml::inlineCheckBoxList ( 'option', '', $options, array (
+		'span' => 2 
+) );
 ?>
 </div>
-<?php 
+<?php
 
+$max = (isset ( $_GET ['max'] )) ? $_GET ['max'] : 80000;
+$min = (isset ( $_GET ['min'] )) ? $_GET ['min'] : 20000;
 
-$max = (isset($_GET['max']))?$_GET['max']:80000;
-$min = (isset($_GET['min']))?$_GET['min']:20000;
-
-$this->widget(
-		'yiiwheels.widgets.rangeslider.WhRangeSlider',
-		array(
-				'id'       => 'price',
-				'name'     => 'price',
-				'delayOut' => 4000,
-				'type'     => 'editRange',
-				'minDefaultValue' => $min,
-				'maxDefaultValue' => $max,
-				'minValue' => $min,
-				'maxValue' => $max,
-				'step' => 10000,
-
-		)
-);
+$this->widget ( 'yiiwheels.widgets.rangeslider.WhRangeSlider', array (
+		'id' => 'price',
+		'name' => 'price',
+		'delayOut' => 4000,
+		'type' => 'editRange',
+		'minDefaultValue' => $min,
+		'maxDefaultValue' => $max,
+		'minValue' => $min,
+		'maxValue' => $max,
+		'step' => 10000 
+)
+ );
 ?>
 
 
@@ -114,10 +114,9 @@ $this->widget(
 echo TbHtml::formActions ( array (
 		TbHtml::submitButton ( '검색', array (
 				'color' => TbHtml::BUTTON_COLOR_PRIMARY 
-		) ) ,
-TbHtml::button('Cancel'),
+		) ),
+		TbHtml::button ( 'Cancel' ) 
 ) );
-
 
 $this->endWidget ();
 unset ( $form );

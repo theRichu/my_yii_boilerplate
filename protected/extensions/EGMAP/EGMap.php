@@ -531,6 +531,8 @@ class EGMap extends EGMapBase {
 
 		$js = $this->getGlobalVariables();
 
+		Yii::app()->getClientScript()->registerScript('EGMap_' . $this->getJsName(), false);
+		
 		Yii::app()->getClientScript()->registerScript('EGMap_' . $this->getJsName(), $js, CClientScript::POS_HEAD);
 
 		$js = 'function ' . $this->_containerId . '_init(){' . PHP_EOL;

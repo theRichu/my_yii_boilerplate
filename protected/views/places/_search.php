@@ -2,8 +2,12 @@
 /* @var $this PlacesController */
 /* @var $model Places */
 /* @var $form CActiveForm */
-$state = (isset ( $_POST ['state'] )) ? $_POST ['state'] : '';
-$city = (isset ( $_POST ['city'] )) ? $_POST ['city'] : '';
+
+$state = Yii::app()->request->getQuery('state');
+$city = Yii::app()->request->getQuery('city');
+$p = Yii::app()->request->getQuery('p');
+$q = Yii::app()->request->getQuery('q');
+$options = Yii::app()->request->getQuery('option');
 
 $state_setting = array (
 		'prompt' => '도/광역시',

@@ -7,6 +7,7 @@ class PlacesController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
+	public $onloadFunctions;
 
 	/**
 	 * @return array action filters
@@ -28,7 +29,7 @@ class PlacesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'loadcities'),
+				'actions'=>array('index','view', 'loadcities', 'map'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -48,7 +49,6 @@ class PlacesController extends Controller
 	
 	public function actionLoadcities()
 	{
-		fb("loadcities");
 	
 		if (Yii::app()->request->isAjaxRequest){
 			$data=Places::model()->findAll('state=:state', array(':state'=>$_POST['state']));
@@ -223,42 +223,22 @@ class PlacesController extends Controller
 	{
 		$model=new Places('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Places']))
-			$model->attributes=$_GET['Places'];
 
-		if(isset($_GET['Places']))
-			$model->attributes=$_GET['Places'];
-		if(isset($_GET['state']))
-			$state = array($_GET['state']);
-		if(isset($_GET['city']))
-			$city = array($_GET['city']);
-		if(isset($_GET['q']))
-			$q = $_GET['q'];
-			
-		$criteria=new CDbCriteria;
-		
-		if(isset($state) && $state!=['']){
-			$criteria->compare('t.state', $state, false);
-		}
-		if(isset($city) && $city!=['']){
-			$criteria->compare('t.city', $city, false);
-		}
-		if(isset($q) && $q!=[''])
-		{
-			$criteria->compare('t.name', $q, true, 'OR');
-			$criteria->compare('t.description', $q,  true, 'OR');
-		}
-		
-		$pagination=false;
-		$dp = new CActiveDataProvider("Places", array(
-				'criteria'=>$criteria,
-				'pagination'=>$pagination,
-		));
-	  
 		$this->render('index',array(
 		  'model'=>$model,
-			'dataProvider'=>$dp,
-		));
+		), false);
+	}
+
+	public function actionMap()
+	{
+		$model=new Places('search');
+		$model->unsetAttributes();  // clear any default values
+		
+			fb("MAP");
+			$this->renderPartial('extensions/_placeNewMap',array(
+					'dataProvider'=>$model->search(),
+	//				'state' => 'AJAX CONTENTS'
+			), false, true);
 	}
 
 	/**
