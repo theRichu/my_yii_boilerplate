@@ -35,6 +35,13 @@ $('.search-button').click(function(){
         $('.search-form').toggle();
         return false;
 });
+
+		$(\"select[name='state']\").change(function(){
+			$('.search-form form').submit();
+    });
+				$(\"select[name='city']\").change(function(){
+			$('.search-form form').submit();
+    });
 $('.search-form form').submit(function(){
 
          $.fn.yiiListView.update('placeSearchResult', { //this section is taken from admin.php. w/only this line diff
@@ -68,14 +75,12 @@ $this->widget ( 'zii.widgets.CListView', array (
 		'itemView' => '_view',
 		'itemsTagName' => 'ul',
 		'itemsCssClass' => 'thumbnails',
-	//	'beforeAjaxUpdate' => "function(id){console.log(id)}",
 		'htmlOptions' => array (
 				'class' => 'row-fluid' 
 		),
 		'summaryText' => 'Displaying {start}-{end} of {count} results.',
-		'template' => "{pager}{items}{summary}",
-		//'afterAjaxUpdate'=>'function(){jQuery("#data").html("'.json_encode($data->getData()).'")}',
-'afterAjaxUpdate'=>'function(id) { dataChanged() }',
+		'template' => "{pager}{summary}{items}",
+		'afterAjaxUpdate'=>'function(id) { dataChanged() }',
 		'enablePagination' => true 
 ) );
 ?>
@@ -84,7 +89,7 @@ $this->widget ( 'zii.widgets.CListView', array (
 <script type="text/javascript">
 
 function dataChanged() {
-	$.get('<?php echo Yii::app()->baseUrl ?>'+ '/places/map', {page: $("li.page.selected a").html()}, function(data) {
+	$.get('<?php echo Yii::app()->baseUrl ?>'+ '/places/map', {page: $("li.page.selected a").html(), state: $("select[name='state']").val(), city:$("select[name='city']").val()}, function(data) {
         $("#data").html(data);
         initialize();
     });

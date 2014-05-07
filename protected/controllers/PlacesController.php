@@ -234,7 +234,6 @@ class PlacesController extends Controller
 		$model=new Places('search');
 		$model->unsetAttributes();  // clear any default values
 		
-			fb("MAP");
 			$this->renderPartial('extensions/_placeNewMap',array(
 					'dataProvider'=>$model->search(),
 	//				'state' => 'AJAX CONTENTS'
